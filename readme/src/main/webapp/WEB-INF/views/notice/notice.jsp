@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ㅎo guys</h1>
-<h2>ㅂㅇㅂㅇ</h2>
+<h1>공지사항 페이지</h1>
 </body>
 </html>

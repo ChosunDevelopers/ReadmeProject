@@ -15,20 +15,15 @@ import com.readme.dto.MemberVO;
 import com.readme.service.MemberService;
 
 @Controller
-@RequestMapping("/readme")
+@RequestMapping("/")
 public class ReadmeController {
 	
 	
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ReadmeController.class);
     
     @Inject
     private MemberService service;
     
-    @RequestMapping("/home")
-    public String home() {
-    	return "check";
-    }
-
     @RequestMapping(value = "/home2", method = RequestMethod.GET)
     public String home(Model model) throws Exception{
  
@@ -40,6 +35,12 @@ public class ReadmeController {
  
         return "home2";
     }
+    
+    @RequestMapping(value = "/index")
+    public String index() {
+    	return "index";
+    }
+    
 
 
 

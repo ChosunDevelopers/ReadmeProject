@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-gogo
+<h1>teamBoardÆäÀÌÁö</h1>
 </body>
 </html>
