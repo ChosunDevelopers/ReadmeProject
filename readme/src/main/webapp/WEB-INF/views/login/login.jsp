@@ -11,7 +11,7 @@
 
 	<h1>This is login Page</h1>
 
-	<form name="loginForm" action="login.do">
+	<form name="loginForm" action="/member/loginMember" method="POST">
 
 
 		<p>id</p>

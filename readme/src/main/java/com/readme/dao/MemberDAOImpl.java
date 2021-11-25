@@ -2,6 +2,7 @@ package com.readme.dao;
 
 import java.util.List;
 
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,6 +24,34 @@ public class MemberDAOImpl implements MemberDAO {
  
         return sqlSession.selectList(Namespace+".selectMember");
     }
+
+	@Override
+	public int insertMember(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		MemberDAO mapper = sqlSession.getMapper(MemberDAO.class);
+		
+		try {
+			result = mapper.insertMember(memberVO);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public MemberVO loginMember(MemberVO memberVO) {
+		MemberVO result = null;
+					
+		try {
+			result = sqlSession.selectOne(Namespace+".loginMember", memberVO);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 
 

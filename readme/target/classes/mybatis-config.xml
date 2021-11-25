@@ -8,4 +8,8 @@
             <typeAlias type="com.readme.dto.MemberVO" alias="memberVO"/>
         </typeAliases>
         
+<!--         <mappers>
+        	<mapper resource = "mappers/memberMapper.xml" />
+        </mappers> -->
+        
     </configuration>
