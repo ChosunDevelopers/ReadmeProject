@@ -9,9 +9,9 @@
 </head>
 <body>
 
-	<h1>This is login Page</h1>
+	<h1>This is signUp Page</h1>
 
-	<form name="loginForm" action="login.do">
+	<form name="loginForm" action="/member/insertMember" method = "POST">
 
 
 		<p>id</p>
@@ -23,6 +23,9 @@
 		<p>phone</p>
 		<input type = "text" name = "phone" placeholder = "010-1111-2222"/>
 		<p>legion</p>
+		<input type = "text" name = "legion"/>
+		
+		<!--
 			<select>
 				<option>서울특별시</option>
 				<option>부산광역시</option>
@@ -33,8 +36,9 @@
 				<option>제주도</option>
 			</select>
 		<p>profileimg</p>
-		<input type="file" name="profileimg" accept="image/*">
-		<p>signdate</p>
+		 <input type="file" name="profileimg" accept="image/*"> -->
+		
+		<input type = "submit" value = "signUp">
 	</form>
 
 

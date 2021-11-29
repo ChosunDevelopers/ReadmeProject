@@ -25,6 +25,8 @@
 	</form>
 
 
+	<a href = "./signUp">SignUp</a>
+
 
 </body>
 </html>

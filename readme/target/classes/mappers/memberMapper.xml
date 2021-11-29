@@ -24,9 +24,7 @@
     	,JUMIN
     	,PHONE
     	,LEGION
-    	,PROFILEIMG
-    	,SIGNDATE
-    
+    	
     )
     VALUES
     (
@@ -35,8 +33,7 @@
     	,#{JUMIN}
     	,#{PHONE}
     	,#{LEGION}
-    	,#{PROFILEIMG}
-    	,SIGNDATE
+    	
     )
     </insert>
     

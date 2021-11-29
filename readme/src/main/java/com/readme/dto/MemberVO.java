@@ -6,9 +6,9 @@ public class MemberVO {
     private String password;
     private String jumin;
     private String legion;
-    private String profileimg;
-    private String signDate;
-    
+//    private String profileimg;
+//    private String signDate;
+//    
     
 	public String getId() {
 		return id;
@@ -34,18 +34,18 @@ public class MemberVO {
 	public void setLegion(String legion) {
 		this.legion = legion;
 	}
-	public String getProfileimg() {
-		return profileimg;
-	}
-	public void setProfileimg(String profileimg) {
-		this.profileimg = profileimg;
-	}
-	public String getSignDate() {
-		return signDate;
-	}
-	public void setSignDate(String signDate) {
-		this.signDate = signDate;
-	}
+//	public String getProfileimg() {
+//		return profileimg;
+//	}
+//	public void setProfileimg(String profileimg) {
+//		this.profileimg = profileimg;
+//	}
+//	public String getSignDate() {
+//		return signDate;
+//	}
+//	public void setSignDate(String signDate) {
+//		this.signDate = signDate;
+//	}
     
 
 	
