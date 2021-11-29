@@ -18,4 +18,9 @@ public class LoginController {
 		return "login/signUp";
 	}
 	
+	@RequestMapping(value = "/myPage")
+	public String myPage() {
+		return "login/myPage";
+	}
+	
 }
