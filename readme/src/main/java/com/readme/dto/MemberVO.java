@@ -4,11 +4,13 @@ public class MemberVO {
 	 
 	private String id;
     private String password;
+    private String name;
     private String jumin;
-    private String legion;
-//    private String profileimg;
-//    private String signDate;
-//    
+    private String phone;
+	private String region;
+    
+    
+    
     
 	public String getId() {
 		return id;
@@ -22,18 +24,43 @@ public class MemberVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getJumin() {
 		return jumin;
 	}
 	public void setJumin(String jumin) {
 		this.jumin = jumin;
 	}
-	public String getLegion() {
-		return legion;
+	public String getPhone() {
+		return phone;
 	}
-	public void setLegion(String legion) {
-		this.legion = legion;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    private String profileimg;
+//    private String signDate;
+//    
+    
 //	public String getProfileimg() {
 //		return profileimg;
 //	}

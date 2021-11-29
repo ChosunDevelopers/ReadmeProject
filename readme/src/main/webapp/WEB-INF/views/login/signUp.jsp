@@ -17,13 +17,15 @@
 		<p>id</p>
 		<input type = "text" name = "id"/>
 		<p>password</p>
-		<input type = "password" name = "password"/>
+		<input type = "text" name = "password"/>
+		<p>name</p>
+		<input type = "text" name = "name"/>
 		<p>jumin</p>
 		<input type = "text" name = "jumin"/>		
 		<p>phone</p>
 		<input type = "text" name = "phone" placeholder = "010-1111-2222"/>
-		<p>legion</p>
-		<input type = "text" name = "legion"/>
+		<p>Region</p>
+		<input type = "text" name = "region"/>
 		
 		<!--
 			<select>

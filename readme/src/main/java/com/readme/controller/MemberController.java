@@ -28,9 +28,9 @@ public class MemberController {
 		
 		if (reuslt == 0) {
 			model.addAttribute("message", "같은 아이디가 있습니다.");
-			return "login";
+			return "/login/login";
 		}
-		return "index";
+		return "redirect:/index";
 	}
 	
 	@RequestMapping(value = "/loginMember", method = RequestMethod.POST)
@@ -59,7 +59,7 @@ public class MemberController {
 	public String logout(MemberVO memberVO, Model model, HttpSession session) {
 		session.invalidate();
 	//session.setAttrivute("loginID",null);으로 해줘도 된다.
-		return "login";
+		return "redirect:/index";
 	}
 	
 	

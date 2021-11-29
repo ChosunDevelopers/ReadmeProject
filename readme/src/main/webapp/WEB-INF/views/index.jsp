@@ -19,6 +19,7 @@
         <script src="../../resources/js/main_confirm.js"></script>
     </head>
     <body id="page-top">
+    
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
@@ -32,14 +33,31 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#board">팀 찾기</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#find">팀원 찾기</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#notify">공지사항</a></li>
+                        
+                        <c:if test = "${loginID == null}">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
+                        </c:if>
+                        
+                        <c:if test = "${loginID != null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">마이페이지</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
+                        </c:if>
+                        
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
+        
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
+            	<c:if test = "${loginID == null }">
+            		로그인이 되지않은 상태
+            	</c:if>
+            	<c:if test = "${loginID != null }">
+            	${loginID} 로그인상태
+            	</c:if>
+            	<br/><br/>
                 <h1>사진 들어갈 곳</h1>
                 <h3>height는 알아서 늘어남</h3>
             </div>
@@ -79,7 +97,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="./memberSearch/memberSearch">
+                    <a class="btn btn-xl btn-outline-light" href="/memberSearch/memberSearch">
                         <i class="fas fa-download me-2"></i>
                         자세히 보기
                     </a>
@@ -143,7 +161,7 @@
                     </div>
                 </div>
             </div>
-
+		${loginID}
         </footer>
     </body>
 </html>

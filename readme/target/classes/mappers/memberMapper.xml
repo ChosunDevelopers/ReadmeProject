@@ -21,18 +21,20 @@
     INSERT INTO MEMBER(
     	ID
     	,PASSWORD
+    	,NAME
     	,JUMIN
     	,PHONE
-    	,LEGION
+    	,REGION
     	
     )
     VALUES
     (
-    	#{ID}
-    	,#{PASSWORD}
-    	,#{JUMIN}
-    	,#{PHONE}
-    	,#{LEGION}
+    	#{id}
+    	,#{password}
+    	,#{name}
+    	,#{jumin}
+    	,#{phone}
+    	,#{region}
     	
     )
     </insert>
@@ -42,9 +44,10 @@
    	SELECT 
 		ID
 		,PASSWORD
+		,NAME
 		,JUMIN
 		,PHONE
-		,LEGION
+		,REGION
 		,PROFILEIMG
 		,SIGNDATE
 		
