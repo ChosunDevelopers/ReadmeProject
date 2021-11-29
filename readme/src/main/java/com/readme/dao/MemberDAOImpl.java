@@ -24,6 +24,40 @@ public class MemberDAOImpl implements MemberDAO {
         return sqlSession.selectList(Namespace+".selectMember");
     }
 
+	@Override
+	public int insertMember(MemberVO memberVO) {
+		
+		
+		// TODO Auto-generated method stub
+		
+//		MemberDAO mapper = sqlSession.getMapper(MemberDAO.class);
+		
+		int result = 0;
+		
+		try {
+			result = sqlSession.insert(Namespace +".insertMember", memberVO );
+//			result = sqlSession.insert(Namespace +".insertMember");
+		}catch(Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+
+		return result;
+	}
+
+	@Override
+	public MemberVO loginMember(MemberVO memberVO) {
+		MemberVO result = null;
+					
+		try {
+			result = sqlSession.selectOne(Namespace+".loginMember", memberVO);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 
 
 }

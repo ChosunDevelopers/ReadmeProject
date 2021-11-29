@@ -34,11 +34,12 @@ public class ReadmeController {
         model.addAttribute("memberList", memberList);
  
         return "home2";
+    
     }
     
     @RequestMapping(value = "/index")
-    public String index() {
-    	return "index";
+    public String index(Model model) {
+    	return "/index";
     }
     
 

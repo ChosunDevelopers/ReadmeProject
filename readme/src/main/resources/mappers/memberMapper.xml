@@ -15,5 +15,50 @@
     <select id="selectMember" resultType="memberVO">
         SELECT ID, PW ,NAME FROM TEST
     </select>
+    
+    <insert id = "insertMember" parameterType = "memberVO">
+    
+    INSERT INTO MEMBER(
+    	ID
+    	,PASSWORD
+    	,NAME
+    	,JUMIN
+    	,PHONE
+    	,REGION
+    	
+    )
+    VALUES
+    (
+    	#{id}
+    	,#{password}
+    	,#{name}
+    	,#{jumin}
+    	,#{phone}
+    	,#{region}
+    	
+    )
+    </insert>
+    
+    <select id = "loginMember" parameterType = "memberVO" resultType = "memberVO">
+
+   	SELECT 
+		ID
+		,PASSWORD
+		,NAME
+		,JUMIN
+		,PHONE
+		,REGION
+		,PROFILEIMG
+		,SIGNDATE
+		
+	FROM MEMBER
+	WHERE
+		ID = #{id} AND
+		PASSWORD = #{password} 
+    
+    </select>
+    
+    
+    
 
 </mapper>
