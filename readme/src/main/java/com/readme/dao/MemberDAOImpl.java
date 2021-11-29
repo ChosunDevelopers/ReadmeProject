@@ -40,8 +40,7 @@ public class MemberDAOImpl implements MemberDAO {
 			e.printStackTrace();
 			return result;
 		}
-		
-		sqlSession.close();
+
 		return result;
 	}
 
@@ -54,7 +53,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		sqlSession.close();
+
 		return result;
 	}
 

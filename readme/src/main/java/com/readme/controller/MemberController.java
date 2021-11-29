@@ -2,6 +2,8 @@ package com.readme.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,11 +40,11 @@ public class MemberController {
 		
 		if(result == null) {
 			model.addAttribute("message", "ID혹은 PW가 틀립니다.");
-			return "login";
-		}else {
-			session.setAttribute("loginID", result.getId());
-			return "index";
+			return "/login/login";
 		}
+		session.setAttribute("loginID", result.getId());
+		
+		return "redirect:/index";
 	}
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)

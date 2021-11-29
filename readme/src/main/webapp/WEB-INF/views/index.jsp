@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -31,7 +32,7 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#board">팀 찾기</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#find">팀원 찾기</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#notify">공지사항</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="./login/login">로그인/회원가입</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,7 +58,7 @@
 
 
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-dark" href="./teamBoard/teamBoard">
+                    <a class="btn btn-xl btn-outline-dark" href="/teamBoard/teamBoard">
                         <i class="fas fa-download me-2"></i>
                         자세히 보기
                     </a>
@@ -142,6 +143,7 @@
                     </div>
                 </div>
             </div>
+
         </footer>
     </body>
 </html>
