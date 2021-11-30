@@ -11,6 +11,45 @@
         </select>
 -->
  
+<delete id="delete_board" parameterType="hashMap">  
+<![CDATA[  
+delete from teamboard  
+where  
+teamboard_bno = #{teamboardBno}  
+]]>  
+</delete>  
+
+ <insert id="insertboard" parameterType="hashMap" useGeneratedKeys="true" keyProperty="board_id">  
+    <![CDATA[
+    insert into teamboard
+    (title, comment, maxteam) 
+    values
+    (#{title}, #{comment}, #{maxteam})
+    ]]>
+</insert>
+ 
+ <update id="update_board" parameterType="hashMap">  
+<![CDATA[  
+	update teamboard set  
+	title = #{title},  
+	comment = #{comment} 
+	where  
+	teamboard_bno = #{teamboardBno}  
+]]>  
+</update>   
+ <select id="select_board" parameterType="hashMap" resultType="hashMap">
+    <![CDATA[
+        select
+        title,
+        comment,
+        regDate 
+        from
+        teamboard
+        where
+        teamboard_bno = #{teamboardBno}   
+    ]]>
+</select>
+ 
  
     <select id="selectMember" resultType="memberVO">
         SELECT ID, PW ,NAME FROM TEST
