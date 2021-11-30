@@ -8,6 +8,7 @@ public class MemberVO {
     private String jumin;
     private String phone;
 	private String region;
+	private String profileImg;
     
     
     
@@ -47,6 +48,12 @@ public class MemberVO {
 	}
 	public void setRegion(String region) {
 		this.region = region;
+	}
+	public String getProfileImg() {
+		return profileImg;
+	}
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
 	}
     
     

@@ -11,23 +11,37 @@
 
 	<h1>This is signUp Page</h1>
 
-	<form name="loginForm" action="/member/insertMember" method = "POST">
+	<form name="loginForm" action="/member/insertMember"
+		enctype="multipart/form-data" method="POST">
 
 
 		<p>id</p>
-		<input type = "text" name = "id"/>
-		<p>password</p>
-		<input type = "text" name = "password"/>
-		<p>name</p>
-		<input type = "text" name = "name"/>
-		<p>jumin</p>
-		<input type = "text" name = "jumin"/>		
-		<p>phone</p>
-		<input type = "text" name = "phone" placeholder = "010-1111-2222"/>
-		<p>Region</p>
-		<input type = "text" name = "region"/>
+		<input type="text" name="id" />
 		
-		<!--
+		<p>password</p>
+		<input type="text" name="password" />
+		
+		<p>name</p>
+		<input type="text" name="name" />
+		
+		<p>jumin</p>
+		<input type="text" name="jumin" />
+		
+		<p>phone</p>
+		<input type="text" name="phone" placeholder="010-1111-2222" />
+		
+		<p>Region</p>
+		<input type="text" name="region" />
+		
+		<p>profileImg</p>
+	 	<input type="file" name="profileImg" /> 	
+	
+		<input type="submit" value="signUp">
+		
+	</form>
+
+
+	<!--
 			<select>
 				<option>서울특별시</option>
 				<option>부산광역시</option>
@@ -39,9 +53,6 @@
 			</select>
 		<p>profileimg</p>
 		 <input type="file" name="profileimg" accept="image/*"> -->
-		
-		<input type = "submit" value = "signUp">
-	</form>
 
 
 

@@ -25,6 +25,7 @@
     	,JUMIN
     	,PHONE
     	,REGION
+    	,PROFILEIMG
     	
     )
     VALUES
@@ -35,6 +36,7 @@
     	,#{jumin}
     	,#{phone}
     	,#{region}
+    	,#{profileImg}
     	
     )
     </insert>
