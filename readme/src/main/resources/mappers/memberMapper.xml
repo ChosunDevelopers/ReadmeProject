@@ -18,27 +18,17 @@
     
     <insert id = "insertMember" parameterType = "memberVO">
     
-    INSERT INTO MEMBER(
-    	ID
-    	,PASSWORD
-    	,NAME
-    	,JUMIN
-    	,PHONE
-    	,REGION
-    	,PROFILEIMG
-    	
-    )
-    VALUES
-    (
-    	#{id}
-    	,#{password}
-    	,#{name}
-    	,#{jumin}
-    	,#{phone}
-    	,#{region}
-    	,#{profileImg}
-    	
-    )
+   <![CDATA[
+   
+	 INSERT INTO MEMBER
+	 
+	 (ID, PASSWORD, NAME, JUMIN, PHONE, REGION, profileImg, profileThumbImg) 
+	 
+	 VALUES
+	 
+	 (#{id}, #{password}, #{name}, #{jumin}, #{phone}, #{region}, #{profileImg}, #{profileThumbImg})
+	]]>
+	
     </insert>
     
     <select id = "loginMember" parameterType = "memberVO" resultType = "memberVO">

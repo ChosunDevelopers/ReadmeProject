@@ -9,7 +9,7 @@ public class MemberVO {
     private String phone;
 	private String region;
 	private String profileImg;
-    
+	private String profileThumbImg;
     
     
     
@@ -54,6 +54,12 @@ public class MemberVO {
 	}
 	public void setProfileImg(String profileImg) {
 		this.profileImg = profileImg;
+	}
+	public String getProfileThumbImg() {
+		return profileThumbImg;
+	}
+	public void setProfileThumbImg(String profileThumbImg) {
+		this.profileThumbImg = profileThumbImg;
 	}
     
     

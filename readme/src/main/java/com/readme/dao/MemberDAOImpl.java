@@ -39,7 +39,7 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		try {
 			result = sqlSession.insert(Namespace +".insertMember", memberVO );
-//			result = sqlSession.insert(Namespace +".insertMember");
+//			
 		}catch(Exception e) {
 			e.printStackTrace();
 			return result;

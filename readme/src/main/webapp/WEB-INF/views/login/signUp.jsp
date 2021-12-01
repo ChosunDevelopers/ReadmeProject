@@ -6,12 +6,17 @@
 <link rel="stylesheet" href="../../resources/css/login.css">
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"   
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   
+	crossorigin="anonymous">
+</script>
+
 </head>
 <body>
 
 	<h1>This is signUp Page</h1>
 
-	<form name="loginForm" action="/member/insertMember"
+	<form role = "form" name="loginForm" action="/member/insertMember"
 		enctype="multipart/form-data" method="POST">
 
 
@@ -34,7 +39,22 @@
 		<input type="text" name="region" />
 		
 		<p>profileImg</p>
-	 	<input type="file" name="profileImg" /> 	
+	 	<input type="file" id = "profileImg" name="profileImg" />
+	 	<div class = "select_img"><img src = "" /></div> 	
+	 	
+	 	
+ <script>
+  $("#profileImg").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ 
 	
 		<input type="submit" value="signUp">
 		

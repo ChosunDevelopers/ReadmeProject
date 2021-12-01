@@ -1,58 +1,62 @@
 package com.readme.controller;
 
 import java.io.File;
-import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.readme.dto.MemberVO;
 import com.readme.service.MemberService;
+import com.readme.utils.UploadFileUtils;
+
 
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 	@Autowired
 	MemberService mService;
 	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
+	
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
-	public String insertMember(MemberVO memberVO, Model model, MultipartHttpServletRequest mtfRequest)
-//	public String insertMember(MemberVO memberVO, Model model, MultipartFile mf)
+	public String insertMember(MemberVO memberVO, MultipartFile file) throws Exception
 	{
 		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
 		
-		String path = "C:\\image\\";
-
-		MultipartFile mf = mtfRequest.getFile("profileImg");
-		String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-
-		System.out.println("originFileName : " + originFileName);
+		logger.info("file는 : " + file);
 		
-//		String safeFile = path + System.currentTimeMillis() + originFileName;
-//		String safeFile = path + originFileName;
-		File saveFile = new File(path, originFileName);
-		
-		try {
-			mf.transferTo(saveFile);
-		} catch(Exception e) {
-			e.printStackTrace();
+		if(file != null) {
+			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 		
-		memberVO.setProfileImg(path + originFileName);
+		memberVO.setProfileImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		memberVO.setProfileThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		
-		int reuslt = mService.insertMember(memberVO);
 		
-		if (reuslt == 0) {
-			model.addAttribute("message", "같은 아이디가 있습니다.");
+		int result = mService.insertMember(memberVO);
+		
+		if (result == 0) {
+//			model.addAttribute("message", "같은 아이디가 있습니다.");
 			return "/login/login";
 		}
 		return "redirect:/index";
