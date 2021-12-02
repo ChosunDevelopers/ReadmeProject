@@ -2,6 +2,7 @@ package com.readme.service;
 
 import java.util.List;
 
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -35,7 +36,13 @@ public class MemberServiceImpl implements MemberService {
 		return dao.loginMember(memberVO);
 	}
 
-
+	@Override
+	public int memberUpdate(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return dao.memberUpdate(memberVO);
+	}
+	
+	
 
 
 }

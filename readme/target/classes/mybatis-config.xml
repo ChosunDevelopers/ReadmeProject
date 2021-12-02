@@ -6,7 +6,10 @@
     
         <typeAliases>
             <typeAlias type="com.readme.dto.MemberVO" alias="memberVO"/>
+            <typeAlias type="com.readme.dto.MemberDetailVO" alias="memberDetailVO"/>
         </typeAliases>
+        
+        
         
 <!--         <mappers>
         	<mapper resource = "mappers/memberMapper.xml" />

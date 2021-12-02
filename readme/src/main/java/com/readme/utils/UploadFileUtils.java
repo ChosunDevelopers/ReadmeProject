@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.springframework.util.FileCopyUtils;
 import net.coobird.thumbnailator.Thumbnails;
 
+//Upload for Img upload
 public class UploadFileUtils {
   
  static final int THUMB_WIDTH = 300;
@@ -36,7 +37,35 @@ public class UploadFileUtils {
   }
   return newFileName;
  }
+ 
+ //Upload fot not img File
+ public static String fileUpload(String uploadPath,
+         String fileName,
+         byte[] fileData, String ymdPath, String notImg) throws Exception {
 
+  UUID uid = UUID.randomUUID();
+  
+  String newFileName = uid + "_" + fileName;
+  String imgPath = uploadPath + ymdPath;
+
+  File target = new File(imgPath, newFileName);
+  FileCopyUtils.copy(fileData, target);
+  
+//  String thumbFileName = "s_" + newFileName;
+  File image = new File(imgPath + File.separator + newFileName);
+
+//  File thumbnail = new File(imgPath + File.separator + "s" + File.separator + thumbFileName);
+
+//  if (image.exists()) {
+//   thumbnail.getParentFile().mkdirs();
+//   Thumbnails.of(image).size(THUMB_WIDTH, THUMB_HEIGHT).toFile(thumbnail);
+//  }
+  return newFileName;
+ }
+
+ 
+ 
+ 
  public static String calcPath(String uploadPath) {
   Calendar cal = Calendar.getInstance();
   String yearPath = File.separator + cal.get(Calendar.YEAR);

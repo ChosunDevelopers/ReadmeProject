@@ -22,5 +22,16 @@ public class LoginController {
 	public String myPage() {
 		return "login/myPage";
 	}
+
+	@RequestMapping(value = "/updateMemberPage")
+	public String updateMypage() {
+		return "login/updateMemberPage";
+	}
+	
+	@RequestMapping(value = "/insertMemberDetailPage")
+	public String insertMemberDetailPage() {
+		return "login/insertMemberDetailPage";
+	}
+	
 	
 }

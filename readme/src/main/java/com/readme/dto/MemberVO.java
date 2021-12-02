@@ -5,7 +5,7 @@ public class MemberVO {
 	private String id;
     private String password;
     private String name;
-    private String jumin;
+    private int jumin;
     private String phone;
 	private String region;
 	private String profileImg;
@@ -31,10 +31,10 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getJumin() {
+	public int getJumin() {
 		return jumin;
 	}
-	public void setJumin(String jumin) {
+	public void setJumin(int jumin) {
 		this.jumin = jumin;
 	}
 	public String getPhone() {

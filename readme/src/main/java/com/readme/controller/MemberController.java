@@ -2,6 +2,7 @@ package com.readme.controller;
 
 import java.io.File;
 
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.readme.dto.MemberDetailVO;
 import com.readme.dto.MemberVO;
+import com.readme.service.MemberDetailService;
 import com.readme.service.MemberService;
 import com.readme.utils.UploadFileUtils;
 
@@ -28,11 +31,14 @@ public class MemberController {
 	
 	@Autowired
 	MemberService mService;
+	@Autowired
+	MemberDetailService mDetailService;
 	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	
 	
+	//회원가입 동작
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO memberVO, MultipartFile file) throws Exception
 	{
@@ -62,6 +68,7 @@ public class MemberController {
 		return "redirect:/index";
 	}
 	
+	//로그인 동작
 	@RequestMapping(value = "/loginMember", method = RequestMethod.POST)
 	public String loginMember(MemberVO memberVO, Model model, HttpSession session) {
 		
@@ -76,6 +83,7 @@ public class MemberController {
 		return "redirect:/index";
 	}
 	
+	//test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(MemberVO memberVO, Model model, HttpSession session) {
 	//로그인 값을 계속 가지고 있는 Session TEST
@@ -84,6 +92,7 @@ public class MemberController {
 		return "index";
 	}
 	
+	//로그아웃 동작
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(MemberVO memberVO, Model model, HttpSession session) {
 		session.invalidate();
@@ -92,6 +101,51 @@ public class MemberController {
 	}
 	
 	
+	
+	//회원정보 수정 동작
+	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+	public String postmemberUpdate(MemberVO memberVO, Model model, HttpSession session) {
+		
+		int result = 0;
+		result = mService.memberUpdate(memberVO);
+
+		if (result == 0) {
+			model.addAttribute("message", "Update실패");
+			return "redirect:/index";
+		}
+		
+		
+	 	return "/login/myPage";
+	}
+	
+	// 추가정보입력 post
+		@RequestMapping(value = "/insertMemberDetail", method = RequestMethod.POST)
+		public String postmemberAdd(MemberDetailVO memberDetailVO, MultipartFile file) throws Exception{
+			
+			String portfolioUploadPath = uploadPath + File.separator + "pfUpload";
+			String ymdPath = UploadFileUtils.calcPath(portfolioUploadPath);
+			String fileName = file.getOriginalFilename();
+			String notImg = "Not Img";
+			logger.info("file는 : " + file);
+			
+			if(file != null) {
+				fileName =  UploadFileUtils.fileUpload(portfolioUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath, notImg);
+			} else {
+				fileName = uploadPath + File.separator + "portfolio" + File.separator ;
+			}
+			
+			memberDetailVO.setPortfolio_path(File.separator + "pfUpload" + ymdPath + File.separator + fileName);
+//			memberDetailVO.setPortfolio_thumbnail_path(File.separator + "pfUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		/* memberDetailVO.setPortfolio_name(fileName); */
+			
+			
+			int result = mDetailService.insertMemberDetail(memberDetailVO);
+			
+			if (result == 0) {
+				return "/login/insertMemberDetailPage";
+			}
+			return "/login/myPage";
+		}
 	
 	
 	

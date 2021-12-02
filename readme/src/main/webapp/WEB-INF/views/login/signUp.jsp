@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../../resources/css/login.css">
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"   
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   
@@ -14,35 +14,46 @@
 </head>
 <body>
 
-	<h1>This is signUp Page</h1>
+<form role="form" method="post" action = "/member/insertMember" autocomplete="off" enctype="multipart/form-data">
 
-	<form role = "form" name="loginForm" action="/member/insertMember"
-		enctype="multipart/form-data" method="POST">
+<div class="inputArea">
+ <label for="id">ì•„ì´ë””</label>
+ <input type="text" id="id" name="id" />
+</div>
 
+<div class="inputArea">
+ <label for="password">ë¹„ë°€ë²ˆí˜¸</label>
+ <input type="text" id="password" name="password" />
+</div>
 
-		<p>id</p>
-		<input type="text" name="id" />
-		
-		<p>password</p>
-		<input type="text" name="password" />
-		
-		<p>name</p>
-		<input type="text" name="name" />
-		
-		<p>jumin</p>
-		<input type="text" name="jumin" />
-		
-		<p>phone</p>
-		<input type="text" name="phone" placeholder="010-1111-2222" />
-		
-		<p>Region</p>
-		<input type="text" name="region" />
-		
-		<p>profileImg</p>
-	 	<input type="file" id = "profileImg" name="profileImg" />
-	 	<div class = "select_img"><img src = "" /></div> 	
-	 	
-	 	
+<div class="inputArea">
+ <label for="name">ì´ë¦„</label>
+ <input type="text" id="name" name="name" />
+</div>
+
+<div class="inputArea">
+ <label for="jumin">ìƒë…„ì›”ì¼</label>
+ <input type="text" id="jumin" name="jumin" />
+</div>
+
+<div class="inputArea">
+ <label for="phone">í•¸ë“œí°ë²ˆí˜¸</label>
+ <input type="text" id="phone" name="phone" />
+</div>
+
+<div class="inputArea">
+ <label for="region">ì§€ì—­</label>
+ <input type="text" id="region" name="region" />
+</div>
+
+<div class="inputArea">
+ <label for="profileImg">ì´ë¯¸ì§€</label>
+ <input type="file" id="profileImg" name="file" />
+ <div class="select_img"><img src="" /></div>
+ 
+ 
+ 
+ 
  <script>
   $("#profileImg").change(function(){
    if(this.files && this.files[0]) {
@@ -55,26 +66,16 @@
   });
  </script>
  
-	
-		<input type="submit" value="signUp">
-		
-	</form>
-
-
-	<!--
-			<select>
-				<option>¼­¿ïÆ¯º°½Ã</option>
-				<option>ºÎ»ê±¤¿ª½Ã</option>
-				<option>°æ±âµµ</option>
-				<option>ÃæÃ»µµ</option>
-				<option>°æ»óµµ</option>
-				<option>Àü¶óµµ</option>
-				<option>Á¦ÁÖµµ</option>
-			</select>
-		<p>profileimg</p>
-		 <input type="file" name="profileimg" accept="image/*"> -->
+  <%= request.getRealPath("/") %>
+</div>
 
 
 
+
+<div class="inputArea">
+ <button type="submit" id="register_Btn" class="btn btn-primary">ë“±ë¡</button>
+</div>
+
+</form>
 </body>
 </html>
