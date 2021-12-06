@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.readme.dto.MemberVO;
 
@@ -63,8 +62,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.update(Namespace + ".memberUpdate", memberVO);
 
 	}
-	
-	
+
 	
 	
 

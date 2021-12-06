@@ -61,14 +61,6 @@
     	WHERE ID = #{id}
     </update>
     
-    <!-- 추가정보 입력 -->
-    <update id="insertMemberDetail">
-    	UPDATE MEMBERDETAIL SET
-    	COMMENT = #{comment},
-    	URL = #{url}
-    	
-    	WHERE ID = #{id}
-    </update>
     
     
 

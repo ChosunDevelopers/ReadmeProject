@@ -58,10 +58,9 @@ public class MemberController {
 		memberVO.setProfileImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		memberVO.setProfileThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		
-		
 		int result = mService.insertMember(memberVO);
 		
-		if (result == 0) {
+		if (result == 0 ) {
 //			model.addAttribute("message", "같은 아이디가 있습니다.");
 			return "/login/login";
 		}
@@ -139,7 +138,7 @@ public class MemberController {
 		/* memberDetailVO.setPortfolio_name(fileName); */
 			
 			
-			int result = mDetailService.insertMemberDetail(memberDetailVO);
+			int result = mDetailService.updateMemberDetail(memberDetailVO);
 			
 			if (result == 0) {
 				return "/login/insertMemberDetailPage";

@@ -6,21 +6,15 @@
 <mapper namespace="com.readme.mapper.memberDetailMapper">
 
  
-    
-    <!-- 추가정보 입력 -->
-    <insert id="insertMemberDetail">
-    
-    	INSERT INTO MEMBERDETAIL 
-    	(ID, COMMENT, URL, PORTFOLIO_NAME, PORTFOLIO_PATH, PORTFOLIO_THUMBNAIL_PATH)
-    	VALUES
-    	( #{id}, #{comment}, #{url}, #{portfolio_name}, #{portfolio_path}, #{portfolio_thumbnail_path}  )  
-    
-    
-    
-    
-    	
-    </insert>
-    
-    
+    <!-- 추가정보 입력, 수정 -->
+    <update id = "updateMemberDetail">
+    UPDATE MEMBERDETAIL
+    SET 
+	    COMMENT = #{comment}, 
+	    URL = #{url}, 
+	    PORTFOLIO_NAME = #{portfolio_name}, 
+	    PORTFOLIO_PATH = #{portfolio_path}
+    WHERE ID = #{id}
+    </update>
 
 </mapper>

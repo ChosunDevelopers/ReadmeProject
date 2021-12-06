@@ -28,7 +28,7 @@
 
 	<!-- 업로드 패스 설정 --> 
 	<beans:bean class="java.lang.String" id="uploadPath">
-	<beans:constructor-arg value="C:\DEV\sts-bundle\pivotal-tc-server\instances\server_new\wtpwebapps\readme\resources" /> 
+	<beans:constructor-arg value="C:\DEV\sts-bundle\pivotal-tc-server\instances\server3\wtpwebapps\readme\resources" /> 
 	 
 	</beans:bean>
 	

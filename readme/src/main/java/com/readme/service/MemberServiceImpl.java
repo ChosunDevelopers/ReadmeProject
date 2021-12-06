@@ -41,8 +41,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.memberUpdate(memberVO);
 	}
-	
-	
+
 
 
 }

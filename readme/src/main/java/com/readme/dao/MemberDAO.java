@@ -15,6 +15,6 @@ public interface MemberDAO {
 	
 	public int memberUpdate(MemberVO memberVO);
 	
-	
+
 	
 }

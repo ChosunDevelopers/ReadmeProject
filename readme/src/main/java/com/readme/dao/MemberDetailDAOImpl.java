@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.readme.dto.MemberDetailVO;
+import com.readme.dto.MemberVO;
 
 @Repository
 public class MemberDetailDAOImpl implements MemberDetailDAO {
@@ -16,10 +17,10 @@ public class MemberDetailDAOImpl implements MemberDetailDAO {
 	private static final String Namespace = "com.readme.mapper.memberDetailMapper";
 
 	@Override
-	public int insertMemberDetail(MemberDetailVO memberDetailVO) {
+	public int updateMemberDetail(MemberDetailVO memberDetailVO) {
 		
-		return sqlSession.update(Namespace+".insertMemberDetail", memberDetailVO);
+		return sqlSession.update(Namespace+".updateMemberDetail", memberDetailVO);
 	}
 	
-	
+
 }
