@@ -1,7 +1,10 @@
 package com.readme.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,23 +17,26 @@ import com.readme.service.TeamBoardService;
 @Controller
 public class TeamBoardController {
 
+    private static final Logger logger = LoggerFactory.getLogger(TeamBoardController.class);
+
 	@Autowired
 	TeamBoardService TeamboardService;
 	
-	@RequestMapping(value = "/teamBoard", method = RequestMethod.GET)
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String teamBoard() {
-		return "teamBoard/teamBoard";
+		return "teamBoard/create";
 	}
 	
-	@RequestMapping(value = "/teamBoard", method = RequestMethod.POST)
-	public ModelAndView teamboardPost(@RequestParam  Map<String, Object> map) {
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public ModelAndView createPost(@RequestParam  Map<String, Object> map) {
 	    ModelAndView mav = new ModelAndView();
-	    String teamboardBno = this.TeamboardService.create(map);
 	    
+	    String teamboardBno = this.TeamboardService.create(map);
+	    logger.info("create까진 옴");
 	    if(teamboardBno==null) {
-	    	mav.setViewName("redirect:/teamBoard");
+	    	mav.setViewName("redirect:/create");
 	    }else {
-	    	mav.setViewName("redirect:/detail?teamBoard_bno=" + teamboardBno);
+	    	mav.setViewName("redirect:/detail?teamboardBno=" + teamboardBno);
 	    }
 	    return mav;
 	}
@@ -68,7 +74,7 @@ public class TeamBoardController {
 		boolean isUpdateSuccess = this.TeamboardService.edit(map); 
 		if (isUpdateSuccess) {  
 		String teamboardBno = map.get("teamboardBno").toString();  
-			mav.setViewName("redirect:/detail?teamboard_bno=" + teamboardBno);  
+			mav.setViewName("redirect:/detail?teamboardBno=" + teamboardBno);  
 		}else {  
 			mav = this.update(map);  
 		}  
@@ -88,6 +94,23 @@ public class TeamBoardController {
 			mav.setViewName("redirect:/detail?teamboardBno=" + teamboardBno);  
 		}  
 	
+		return mav;  
+	}  
+	
+	@RequestMapping(value = "list")  
+	public ModelAndView list(@RequestParam Map<String, Object> map) {  
+
+		List<Map<String, Object>> list = this.TeamboardService.list(map); 
+	
+		
+		
+		ModelAndView mav = new ModelAndView();  
+		mav.addObject("data", list);  
+
+		if (map.containsKey("keyword")) {  
+		mav.addObject("keyword", map.get("keyword"));  
+		}  
+		mav.setViewName("/teamBoard/list");  
 		return mav;  
 	}  
 }
