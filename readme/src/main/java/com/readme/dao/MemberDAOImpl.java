@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.readme.dto.MemberProfileVO;
 import com.readme.dto.MemberVO;
 
 @Repository
@@ -62,6 +63,14 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.update(Namespace + ".memberUpdate", memberVO);
 
 	}
+
+	@Override
+	public MemberProfileVO myProfile(MemberProfileVO memberProfileVO) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(Namespace + ".myProfile", memberProfileVO);
+	}
+	
+	
 
 	
 	

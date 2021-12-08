@@ -2,7 +2,7 @@ package com.readme.dao;
 
 import java.util.List;
 
-
+import com.readme.dto.MemberProfileVO;
 import com.readme.dto.MemberVO;
 
 public interface MemberDAO {
@@ -15,6 +15,6 @@ public interface MemberDAO {
 	
 	public int memberUpdate(MemberVO memberVO);
 	
-
+	public MemberProfileVO myProfile(MemberProfileVO memberProfileVO);
 	
 }

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.readme.dao.MemberDAO;
+import com.readme.dto.MemberProfileVO;
 import com.readme.dto.MemberVO;
 
 @Service
@@ -40,6 +41,13 @@ public class MemberServiceImpl implements MemberService {
 	public int memberUpdate(MemberVO memberVO) {
 		// TODO Auto-generated method stub
 		return dao.memberUpdate(memberVO);
+	}
+
+
+	@Override
+	public MemberProfileVO myProfile(MemberProfileVO memberProfileVO) {
+		// TODO Auto-generated method stub
+		return dao.myProfile(memberProfileVO);
 	}
 
 

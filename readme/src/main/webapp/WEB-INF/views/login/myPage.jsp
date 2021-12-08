@@ -17,6 +17,12 @@
 <a href = "./favoMember">관심사용자관리</a>
 <a href = "./memberDeleteView">회원탈퇴</a>
 
+<form action = "/member/myProfile" method = "GET">
+	<input type = "hidden" name = "id" value = "${loginID }" />
+	<input type = "submit" value = "나의 프로필">
+</form>
+
+<a href = "/login/myProfile">나의 프로필</a>
 
 
 </body>

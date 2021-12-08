@@ -33,5 +33,8 @@ public class LoginController {
 		return "login/insertMemberDetailPage";
 	}
 	
-	
+	@RequestMapping(value = "/myProfile")
+	public String myProfile() {
+		return "login/myProfile";
+	}
 }
