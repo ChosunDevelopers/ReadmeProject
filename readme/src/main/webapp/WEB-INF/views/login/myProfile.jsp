@@ -1,14 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function doing(){
+	const test = document.getElementById("profieImgTest");
+	test.innerHTML = "${myProfile.profileImg}";
+	
+	var path = "../../resources" + "${myProfile.profileImg}";
+ 	var target = document.getElementById("profileImg");
+ 	target.src = path;
+}
+</script>
 </head>
 <body>
 <h1> This is MyProfile Page</h1>
-
+<button onClick = "doing()">Click this</button>
+<p id = "profieImgTest">a</p>
+<img id = "profileImg" src = "" alt = "no Image Founds"></img>
+<img src = "s"></img>
 <p>
 name : ${myProfile.name}</p>
 <p>

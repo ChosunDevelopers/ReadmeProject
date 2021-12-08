@@ -44,4 +44,11 @@
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/resources/imgUpload/2021</name>
+			<type>2</type>
+			<locationURI>PARENT-6-PROJECT_LOC/DEV/sts-bundle/pivotal-tc-server/instances/server3/wtpwebapps/readme/resources/imgUpload/2021</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
