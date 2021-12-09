@@ -50,7 +50,7 @@ teamboard_bno = #{teamboardBno}
 <![CDATA[  
 	update teamboard set  
 	title = #{title},  
-	comment = #{comment} 
+	comment = #{comment}
 	where  
 	teamboard_bno = #{teamboardBno}  
 ]]>  
@@ -59,13 +59,15 @@ teamboard_bno = #{teamboardBno}
     <![CDATA[
         select
         title,
+        id,
         comment,
-        regDate 
+        regDate,
+        maxteam 
         from
         teamboard
         where
         teamboard_bno = #{teamboardBno}   
-    ]]>
+    ]]> 
 </select>
  
  

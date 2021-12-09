@@ -3,63 +3,65 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>팀 목록</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-	.container {
-		display: flex;
-		justify-content: center;
-		align-items:center;
-	}
-</style>
+<title>부트스트랩 적용</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<h1>팀 목록</h1>
 
-	<table>
-		<thead>
-		<div class="container">
-			<tr>
-				<td width="50">제목</td>
-				<td width="50">내용</td>
+	<div class="container">
+		<form class = "pull-right">
+			<input type="text" placeholder="검색" name="keyword" value="${keyword}" />
+			<input type="submit" class="btn" value="검색" />
+		</form>
+		<table class="table text-center table-bordered table-hover">
+			<thead>
+				<div>
+					<tr>
+						<td>번호</td>
+						<td>제목</td>
 
-				<td width="100">게시날짜</td>
-				<td>
-					<p>
-						<a href="/create">생성</a>
-					</p>
-				</td>
-			</tr>
-			<tr>
-				<p>
-				<form>
-					<input type="text" placeholder="검색" name="keyword"
-						value="${keyword}" /> <input type="submit" value="검색" />
-				</form>
-				</p>
+						<td>게시날짜</td>
 
-			</tr>
-			</div>
-		</thead>
-		<tbody>
-			<c:forEach var="row" items="${data}">
-				<tr align="center" height="20">
-					<td><a href="/detail?teamboardBno=${row.teamBoard_bno}">
-							${row.title} </a></td>
-					<td>${row.comment}</td>
-					<%-- <td><fmt:formatNumber type="number" maxFractionDigits="3"
+
+					</tr>
+				</div>
+			</thead>
+			<tbody>
+				<c:forEach var="row" items="${data}">
+					<tr align="center" height="20">
+
+						<td>${row.teamBoard_bno}</td>
+						<td><a href="/detail?teamboardBno=${row.teamBoard_bno}">
+								${row.title} </a></td>
+						<%-- <td><fmt:formatNumber type="number" maxFractionDigits="3"
 							value="${row.regdate}" /></td> --%>
-					<td><fmt:formatDate value="${row.regDate}" pattern="yyyy-MM-dd"/></td>
+						<td><fmt:formatDate value="${row.regDate}"
+								pattern="yyyy-MM-dd" /></td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td colspan="5" align="center" height="40">
+						<%-- ${pageCode} --%>
+					</td>
 				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="5" align="center" height="40">
-					<%-- ${pageCode} --%>
-				</td>
-			</tr>
 
-		</tbody>
-	</table>
+			</tbody>
+		</table>
 
+		<td>
+			<p>
+				<a href="/create" type="button" class="btn btn-primary pull-right">글쓰기</a>
+			</p>
+		</td>
+	</div>
 </body>
 </html>

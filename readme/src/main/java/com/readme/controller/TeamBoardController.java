@@ -32,7 +32,6 @@ public class TeamBoardController {
 	    ModelAndView mav = new ModelAndView();
 	    
 	    String teamboardBno = this.TeamboardService.create(map);
-	    logger.info("create까진 옴");
 	    if(teamboardBno==null) {
 	    	mav.setViewName("redirect:/create");
 	    }else {
