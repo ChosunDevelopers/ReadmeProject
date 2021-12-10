@@ -36,6 +36,7 @@ profileImg : ${myProfile.profileImg}</p>
 <p>
 profileThumbImg : ${myProfile.profileThumbImg}</p>
 <p>
+<a href = "/login/updateMemberPage">회원정보수정</a>
 <hr/>
 comment : ${myProfile.comment}</p>
 <p>
@@ -45,7 +46,7 @@ portfolio_name : ${myProfile.portfolio_name}</p>
 <p>
 portfolio_path : ${myProfile.portfolio_path}</p>
 
-
+<a href = "/login/insertMemberDetailPage">추가정보 수정</a>
 
 
 </body>

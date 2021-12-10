@@ -8,6 +8,7 @@ public class MemberDetailVO {
 	private String portfolio_name;
 	private String portfolio_path;
 	private String portfolio_thumbnail_path;
+	private String skill;
 	
 	
 	
@@ -47,7 +48,12 @@ public class MemberDetailVO {
 	public void setPortfolio_thumbnail_path(String portfolio_thumbnail_path) {
 		this.portfolio_thumbnail_path = portfolio_thumbnail_path;
 	}
-	
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
 	
 	
 	

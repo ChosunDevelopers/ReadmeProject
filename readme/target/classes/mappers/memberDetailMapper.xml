@@ -14,7 +14,12 @@
 	    URL = #{url}, 
 	    PORTFOLIO_NAME = #{portfolio_name}, 
 	    PORTFOLIO_PATH = #{portfolio_path}
-    WHERE ID = #{id}
+    WHERE ID = #{id};
+    
+    UPDATE MEMBER_SKILL_REL
+    SET 
+    	SKILL = #{skill}
+    WHERE ID = #{id};
     </update>
 
 </mapper>
