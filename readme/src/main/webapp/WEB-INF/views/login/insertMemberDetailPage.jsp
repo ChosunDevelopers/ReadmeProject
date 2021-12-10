@@ -10,7 +10,19 @@
 	 	
 	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<title>추가정보입력</title>
-	</head>
+	
+	<style>
+		.checkbox{
+			display:inline;
+		}
+	
+		label{
+			width : 110px;
+		}
+	
+	
+	</style>
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
@@ -52,12 +64,14 @@
 			}
 			var inputTarget = document.getElementById("skill");
 			inputTarget.value = str;
+			alert("Skill selected!");
 		/* alert(inputTarget.value); */
 		/* alert(str); */
 		/* alert(checkbox accepted); */
 		}
 		
 	</script>
+	</head>
 	<body>
 	<span>${loginID }</span>
 		<section id="container">
@@ -91,10 +105,31 @@
 				</div>
 				
 				<input id = "skill" type = "hidden" name = "skill" value = ""></input>
+				<h3>Front End</h3>
+				<label><input class = "checkBox" type = "checkbox" value = "Angular">Angular</label>
+				<label><input class = "checkBox" type = "checkbox" value = "CSS">CSS</label>
+				<label><input class = "checkBox" type = "checkbox" value = "HTML">HTML</label>
+				<label><input class = "checkBox" type = "checkbox" value = "JavaScript">JavaScript</label>
+				<label><input class = "checkBox" type = "checkbox" value = "React">React</label>
+				<label><input class = "checkBox" type = "checkbox" value = "TypeScript">TypeScript</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Vue">Vue</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Webpack">Webpack</label>
+				<h3>Back End</h3>
+				<label><input class = "checkBox" type = "checkbox" value = "C">C</label>
+				<label><input class = "checkBox" type = "checkbox" value = "C#">C#</label>
+				<label><input class = "checkBox" type = "checkbox" value = "C++">C++</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Java">Java</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Node">Node</label>
+				<label><input class = "checkBox" type = "checkbox" value = "PHP">PHP</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Python">Python</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Ruby">Ruby</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Spring">Spring</label>
+				<h3>Mobile Application</h3>
+				<label><input class = "checkBox" type = "checkbox" value = "Flutter">Flutter</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Kotlin">Kotlin</label>
+				<label><input class = "checkBox" type = "checkbox" value = "ReactNative">ReactNative</label>
+				<label><input class = "checkBox" type = "checkbox" value = "Swift">Swift</label>
 				
-				<input class = "checkBox" type = "checkbox" id = "check1" value = "check1">check1</input><br/>
-				<input class = "checkBox" type = "checkbox" id = "check2" value = "check2">check2</input><br/>
-				<input class = "checkBox" type = "checkbox" id = "check3" value = "check3">check3</input><br/>
 				
 			</form>
 			<button onclick = "checkStr()" value = "선택 완료">선택 완료</button>

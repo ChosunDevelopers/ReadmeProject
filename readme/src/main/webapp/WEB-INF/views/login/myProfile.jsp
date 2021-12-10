@@ -39,8 +39,8 @@ profileThumbImg : ${myProfile.profileThumbImg}</p>
 <a href = "/login/updateMemberPage">회원정보수정</a>
 <hr/>
 comment : ${myProfile.comment}</p>
-<p>
-url : ${myProfile.url}</p>
+<p>url : 
+<a href = ${myProfile.url } >${myProfile.url }</a></p>
 <p>
 portfolio_name : ${myProfile.portfolio_name}</p>
 <p>
