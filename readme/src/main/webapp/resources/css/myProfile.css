@@ -1,0 +1,38 @@
+
+body{
+	
+}
+
+.wrapper{
+	background-color : white;	
+	width : 70%;
+	margin-left : 15%;
+}
+
+.profilePartOne{
+	border : 8px solid #1ABC9C;
+	
+}
+
+.profilePartTwo{
+	border : 8px solid #2C3E50;
+	border-top : none;
+}
+
+#profileImg{
+	padding-left : 50px;
+	padding-top : 10px;
+	border : 3px solid red;
+	
+}
+
+.tableLeft{
+	width : 200px;
+	height : 40px;
+}
+
+
+.partOneText{
+	border : 3px solid blue;
+	
+}
