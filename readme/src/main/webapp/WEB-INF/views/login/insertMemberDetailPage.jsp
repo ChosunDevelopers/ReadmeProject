@@ -44,31 +44,39 @@
 					return false;
 				}
 			});
-			
-				
-			
 		})
 		
-		function checkStr(){
+		
+		var arr = [];
+		
+		function checkClear(){
 			var str = "";
-			var targets = document.getElementsByClassName("checkBox");
-			for (var i = 0 ; i < targets.length ; i ++){
-				if (targets[i].checked){
-					if (!str){
-						str += targets[i].value;	
-					}
-					else{
-						str += "," + targets[i].value;
-					}
-				}
+			arr = [];
+			var checkboxes = document.getElementsByClassName("checkBox");
+			for (var i = 0 ; i < checkboxes.length ; i ++){
+				if (checkboxes[i].checked)
+					checkboxes[i].checked = false;
 			}
 			var inputTarget = document.getElementById("skill");
 			inputTarget.value = str;
-			alert("Skill selected!");
-		/* alert(inputTarget.value); */
-		/* alert(str); */
-		/* alert(checkbox accepted); */
+			alert("Skill unChecked!");
 		}
+		
+		function checkboxHandler(element){
+			
+			const idx = arr.indexOf(element.value);
+			if (idx > -1)
+				arr.splice(idx, 1);
+			else{
+			arr.push(element.value);
+			}
+			var str = arr.join();
+			var inputTarget = document.getElementById("skill");
+			inputTarget.value = str;
+			alert(str);
+		}
+		
+		
 		
 	</script>
 	</head>
@@ -76,11 +84,42 @@
 	<span>${loginID }</span>
 		<section id="container">
 			<form action="/member/insertMemberDetail" method="post" enctype="multipart/form-data">
-			
+				
 				<div class="form-group has-feedback">
 					<label class="control-label" for="id">아이디</label>
 					<input class="form-control" type="text" id="id" name="id" value="${loginID}" readonly="readonly"/>	
 				</div>
+				
+				<strong><h4>사용 가능한 기술 체크!</h4></strong>
+				
+				<input id = "skill" type = "hidden" name = "skill" value = ""></input>
+				<h5>Front End</h5>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Angular">Angular</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "CSS">CSS</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "HTML">HTML</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "JavaScript">JavaScript</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "React">React</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "TypeScript">TypeScript</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Vue">Vue</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Webpack">Webpack</label>
+				<h5>Back End</h5>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "C">C</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "C#">C#</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "C++">C++</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Java">Java</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Node">Node</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "PHP">PHP</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Python">Python</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Ruby">Ruby</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Spring">Spring</label>
+				<h5>Mobile Application</h5>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Flutter">Flutter</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Kotlin">Kotlin</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "ReactNative">ReactNative</label>
+				<label><input onclick = "checkboxHandler(this)" class = "checkBox" type = "checkbox" value = "Swift">Swift</label>
+				<br/>
+				<button type = "button" onclick = "checkClear()" value = "선택 초기화">선택 초기화</button>
+				<br/><br/><br/>
 				
 				<div class="form-group has-feedback">
 					<label class="control-label" for="comment">자기소개</label>
@@ -104,35 +143,8 @@
 					<button class="cancel btn btn-danger" type="button">취소</button>
 				</div>
 				
-				<input id = "skill" type = "hidden" name = "skill" value = ""></input>
-				<h3>Front End</h3>
-				<label><input class = "checkBox" type = "checkbox" value = "Angular">Angular</label>
-				<label><input class = "checkBox" type = "checkbox" value = "CSS">CSS</label>
-				<label><input class = "checkBox" type = "checkbox" value = "HTML">HTML</label>
-				<label><input class = "checkBox" type = "checkbox" value = "JavaScript">JavaScript</label>
-				<label><input class = "checkBox" type = "checkbox" value = "React">React</label>
-				<label><input class = "checkBox" type = "checkbox" value = "TypeScript">TypeScript</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Vue">Vue</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Webpack">Webpack</label>
-				<h3>Back End</h3>
-				<label><input class = "checkBox" type = "checkbox" value = "C">C</label>
-				<label><input class = "checkBox" type = "checkbox" value = "C#">C#</label>
-				<label><input class = "checkBox" type = "checkbox" value = "C++">C++</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Java">Java</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Node">Node</label>
-				<label><input class = "checkBox" type = "checkbox" value = "PHP">PHP</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Python">Python</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Ruby">Ruby</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Spring">Spring</label>
-				<h3>Mobile Application</h3>
-				<label><input class = "checkBox" type = "checkbox" value = "Flutter">Flutter</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Kotlin">Kotlin</label>
-				<label><input class = "checkBox" type = "checkbox" value = "ReactNative">ReactNative</label>
-				<label><input class = "checkBox" type = "checkbox" value = "Swift">Swift</label>
-				
-				
 			</form>
-			<button onclick = "checkStr()" value = "선택 완료">선택 완료</button>
+			
 		</section>
 	</body>
 </html>

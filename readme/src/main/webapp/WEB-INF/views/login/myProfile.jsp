@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,8 @@ function doing(){
 <p id = "profieImgTest">a</p>
 <img id = "profileImg" src = "" alt = "no Image Founds"></img>
 <img src = "s"></img>
+<img src = "<spring:url value = '${myProfile.profileImg}'/>"/>
+<img src = "<spring:url value = '${myProfile.profileThumbImg}'/>"/>
 <p>
 name : ${myProfile.name}</p>
 <p>

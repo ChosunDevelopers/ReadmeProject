@@ -10,19 +10,20 @@
 <h1>This is MyPage</h1>
 
 
-<a href = "/login/updateMemberPage">회원정보수정</a>	
-<a href = "/login/insertMemberDetailPage">추가정보 입력</a>	
+<!-- <a href = "/login/updateMemberPage">회원정보수정</a>	 -->
+<!-- <a href = "/login/insertMemberDetailPage">추가정보 입력</a> -->
+
+<form action = "/member/myProfile" method = "GET">
+	<input type = "hidden" name = "id" value = "${loginID }" />
+	<input type = "submit" value = "나의 프로필">
+</form>	
 <a href = "./applicationNotice">지원공고관리</a>
 <a href = "./favoNotice">관심공고관리</a>
 <a href = "./favoMember">관심사용자관리</a>
 <a href = "./memberDeleteView">회원탈퇴</a>
 
-<form action = "/member/myProfile" method = "GET">
-	<input type = "hidden" name = "id" value = "${loginID }" />
-	<input type = "submit" value = "나의 프로필">
-</form>
 
-<a href = "/login/myProfile">나의 프로필</a>
+
 
 
 
