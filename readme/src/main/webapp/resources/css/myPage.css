@@ -1,0 +1,22 @@
+table{
+	width : 70%;
+	margin-left : 15%;
+	border-spacing : 0 30px;
+}
+
+td{
+	text-align : center;
+	height : 120px;
+	border : 15px solid #1ABC9C;
+	border-radius : 5px;
+	margin-bottom : 300px;
+}
+
+tr{
+	border-bottom : 30px solid white;
+}
+
+a{
+	color : #2C3E50;
+	font-size : 30px;
+}

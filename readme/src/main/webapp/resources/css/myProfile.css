@@ -33,6 +33,10 @@ body{
 	height : 40px;
 }
 
+#profileImg{
+	height : 380px;	
+}
+
 .profilePartTwo{
 	border : 8px solid #2C3E50;
 }

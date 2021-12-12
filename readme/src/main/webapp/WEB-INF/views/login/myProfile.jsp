@@ -26,7 +26,7 @@
 		<table class = "profilePartOne">
 		<tr>
 			<td class = "partOneLeft">
-				<img src="<spring:url value = '${myProfile.profileThumbImg}'/>" />
+				<img id = "profileImg" src="<spring:url value = '${myProfile.profileThumbImg}'/>" />
 			</td>
 				
 			<td class="partOneRight">
