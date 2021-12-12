@@ -32,4 +32,8 @@ public class TeamBoardDAO {
 		return this.sqlSessionTemplate.selectList("com.readme.mapper.teamMapper.select_list", map);  
 	}  
 	
+	public List<Map<String, Object>> replyList(Map<String, Object> map){
+		return this.sqlSessionTemplate.selectList("com.readme.mapper.teamMapper.reply", map);  
+	}
+	
 }

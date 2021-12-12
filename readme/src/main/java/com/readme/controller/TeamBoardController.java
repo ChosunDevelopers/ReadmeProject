@@ -58,8 +58,11 @@ public class TeamBoardController {
 	@RequestMapping(value = "/update", method = RequestMethod.GET)  
 	public ModelAndView update(@RequestParam Map<String, Object> map) {  
 		Map<String, Object> detailMap = this.TeamboardService.board_detail(map);
+		List<Map<String, Object>> replyList = this.TeamboardService.replyList(map); 
 	
 		ModelAndView mav = new ModelAndView();  
+
+		mav.addObject("replydata", replyList);
 		mav.addObject("data", detailMap);  
 		mav.setViewName("/teamBoard/update");  
 		return mav;  
@@ -100,12 +103,11 @@ public class TeamBoardController {
 	public ModelAndView list(@RequestParam Map<String, Object> map) {  
 
 		List<Map<String, Object>> list = this.TeamboardService.list(map); 
-	
+		
 		
 		
 		ModelAndView mav = new ModelAndView();  
 		mav.addObject("data", list);  
-
 		if (map.containsKey("keyword")) {  
 		mav.addObject("keyword", map.get("keyword"));  
 		}  

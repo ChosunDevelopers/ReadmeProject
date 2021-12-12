@@ -11,6 +11,17 @@
         </select>
 -->
  
+ 
+ 
+<!-- 댓글 조회 -->
+	<select id="reply" parameterType="hashMap" resultType="hashMap">
+    	SELECT
+    		  RNO, BNO, ID, COMMENT, REGDATE
+    	 FROM TEAMBOARDREPLY
+    	WHERE teamboard_bno = #{teamboardBno}
+	</select>
+	
+	
  <select id="select_list" parameterType="hashMap" resultType="hashMap">  
 <![CDATA[  
 select  

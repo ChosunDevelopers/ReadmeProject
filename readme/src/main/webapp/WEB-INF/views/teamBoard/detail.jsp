@@ -19,6 +19,7 @@
 			<div class="col-md-12">
 				<div class="page-header">
 					<h1>${ data.title }</h1>
+					<h1>${ replydata.comment }test</h1>
 				</div>
 
 				<h3>${ data.comment }</h3>
@@ -42,6 +43,7 @@
 					<p>
 						<a class="btn btn-sm btn-primary" href="/list">목록으로</a>
 					</p>
+					
 				</blockquote>
 
 			
