@@ -23,46 +23,44 @@
 
 	<div class="wrapper">
 
-		<div class="profilePartOne">
-			<table>
-			<tr>
-				<td>
-					<img id="profileImg"
-					src="<spring:url value = '${myProfile.profileThumbImg}'/>" />
-				</td>
+		<table class = "profilePartOne">
+		<tr>
+			<td class = "partOneLeft">
+				<img src="<spring:url value = '${myProfile.profileThumbImg}'/>" />
+			</td>
 				
-				<td class="partOneText">
-					<table>
-						<tr>
-							<td class="tableLeft">이름</td>
-							<td>${myProfile.name}</td>
-						</tr>
-						<tr>
-							<td class="tableLeft">생년월일</td>
-							<td>${myProfile.jumin}</td>
-						</tr>
-						<tr>
-							<td class="tableLeft">핸드폰 번호</td>
-							<td>${myProfile.phowne}</td>
-						</tr>
-						<tr>
-							<td class="tableLeft">지역</td>
-							<td>${myProfile.region}</td>
-						</tr>
-						<tr>
-							<td class="tableLeft"></td>
-							<td><a href="/login/updateMemberPage">회원정보수정</a></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			</table>
-		</div>
+			<td class="partOneRight">
+				<table>
+					<tr>
+						<td class="tableLeft">이름</td>
+						<td>${myProfile.name}</td>
+					</tr>
+					<tr>
+						<td class="tableLeft">생년월일</td>
+						<td>${myProfile.jumin}</td>
+					</tr>
+					<tr>
+						<td class="tableLeft">핸드폰 번호</td>
+						<td>${myProfile.phone}</td>
+					</tr>
+					<tr>
+						<td class="tableLeft">지역</td>
+						<td>${myProfile.region}</td>
+					</tr>
+					<tr>
+						<td class="tableLeft"></td>
+						<td><a href="/login/updateMemberPage">회원정보수정</a></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		</table>
+		
 
 		<div class="profilePartTwo">
-
-			comment : ${myProfile.comment}
-			</p>
+			<h4>자기소개</h4>
+			 <span>${myProfile.comment}</span>
+			
 			<p>
 				url : <a href=${myProfile.url }>${myProfile.url }</a>
 			</p>
