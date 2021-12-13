@@ -11,14 +11,16 @@
         </select>
 -->
  
+
  
  
 <!-- 댓글 조회 -->
-	<select id="reply" parameterType="hashMap" resultType="hashMap">
-    	SELECT
-    		  RNO, BNO, ID, COMMENT, REGDATE
-    	 FROM TEAMBOARDREPLY
-    	WHERE teamboard_bno = #{teamboardBno}
+	<select id="readReply"  parameterType="hashMap" resultType="hashMap">
+	<![CDATA[
+    	select
+    		  rno, id, comment, regdate from teamboardreply
+    	where bno = #{teamboardBno}
+    	]]> 
 	</select>
 	
 	

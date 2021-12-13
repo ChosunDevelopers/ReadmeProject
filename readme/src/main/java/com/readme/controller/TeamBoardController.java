@@ -42,14 +42,19 @@ public class TeamBoardController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public ModelAndView detail(@RequestParam Map<String, Object> map) {
 		Map<String, Object> detailMap = this.TeamboardService.board_detail(map);
-		
+		List<Map<String, Object>> readReply = this.TeamboardService.readReply(map); 
+
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("data", detailMap);
+		mav.addObject("replyList", readReply);
+		
+		logger.info("댓글 : " + readReply);
 		String teamboardBno = map.get("teamboardBno").toString();
+	
+		
 		mav.addObject("teamboardBno", teamboardBno);
 		mav.setViewName("/teamBoard/detail");
-		
 		
 		return mav;
 	}
@@ -58,11 +63,8 @@ public class TeamBoardController {
 	@RequestMapping(value = "/update", method = RequestMethod.GET)  
 	public ModelAndView update(@RequestParam Map<String, Object> map) {  
 		Map<String, Object> detailMap = this.TeamboardService.board_detail(map);
-		List<Map<String, Object>> replyList = this.TeamboardService.replyList(map); 
 	
 		ModelAndView mav = new ModelAndView();  
-
-		mav.addObject("replydata", replyList);
 		mav.addObject("data", detailMap);  
 		mav.setViewName("/teamBoard/update");  
 		return mav;  

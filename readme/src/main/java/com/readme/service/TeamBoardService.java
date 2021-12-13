@@ -19,5 +19,5 @@ public interface TeamBoardService {
 
 	List<Map<String, Object>> list(Map<String, Object> map);
 
-	List<Map<String, Object>> replyList(Map<String, Object> map);
+	List<Map<String, Object>> readReply(Map<String, Object> map);
 }

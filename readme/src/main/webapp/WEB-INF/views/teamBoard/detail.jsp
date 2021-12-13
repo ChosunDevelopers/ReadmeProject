@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <title>글 상세</title>
@@ -19,7 +20,7 @@
 			<div class="col-md-12">
 				<div class="page-header">
 					<h1>${ data.title }</h1>
-					<h1>${ replydata.comment }test</h1>
+					<h1>ID ${loginID }</h1>
 				</div>
 
 				<h3>${ data.comment }</h3>
@@ -43,12 +44,23 @@
 					<p>
 						<a class="btn btn-sm btn-primary" href="/list">목록으로</a>
 					</p>
-					
+
 				</blockquote>
 
-			
-				</div>
+				<!--  댓글 -->
+				<div id="reply">
+					<ol class="replyList">
+						<c:forEach  var="replyList" items="${replyList}">
+						
+						<p>작성자: ${replyList.id }</p>
+						<p>작성 날짜 :<fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" /></p>
+						<p>작성내용 :${replyList.comment }</p>
+						</c:forEach>
+					</ol>
+				</div> 
+
 			</div>
 		</div>
+	</div>
 </body>
 </html>

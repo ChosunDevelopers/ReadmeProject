@@ -48,8 +48,8 @@ public class TeamBoardServiceImpl implements TeamBoardService {
 	}  
 	
 	@Override  
-	public List<Map<String, Object>> replyList(Map<String, Object> map){  
-		return this.teamBoardDAO.replyList(map);
+	public List<Map<String, Object>> readReply(Map<String, Object> map){  
+		return this.teamBoardDAO.readReply(map);
 	} 
 	
 }
