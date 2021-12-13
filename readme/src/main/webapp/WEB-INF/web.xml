@@ -30,9 +30,13 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-    <!-- 시작페이지 설정 -->
-    <welcome-file-list>
-        <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
-    </welcome-file-list>
+	<!-- 시작페이지 설정 -->
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/views/index.jsp</welcome-file>
+	</welcome-file-list>
+
+	
+
+
     
 </web-app>

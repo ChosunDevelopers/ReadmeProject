@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.readme.mapper.memberDetailMapper">
+
+ 
+    <!-- 추가정보 입력, 수정 -->
+    <update id = "updateMemberDetail">
+    UPDATE MEMBERDETAIL
+    SET 
+	    COMMENT = #{comment}, 
+	    URL = #{url}, 
+	    PORTFOLIO_NAME = #{portfolio_name}, 
+	    PORTFOLIO_PATH = #{portfolio_path}
+    WHERE ID = #{id};
+    
+    UPDATE MEMBER_SKILL_REL
+    SET 
+    	SKILL = #{skill}
+    WHERE ID = #{id};
+    </update>
+
+</mapper>

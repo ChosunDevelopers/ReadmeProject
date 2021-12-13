@@ -2,18 +2,77 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+
 <mapper namespace="com.readme.mapper.memberMapper">
 
-<!--   
-        <select id="selectMember" resultType="com.readme.dto.MemberVO" >
-            SELECT ID, PW ,NAME FROM TEST
-        </select>
--->
- 
- 
-    <select id="selectMember" resultType="memberVO">
-        SELECT ID, PW ,NAME FROM TEST
-    </select>
+	<!-- <select id="selectMember" resultType="com.readme.dto.MemberVO" > SELECT 
+		ID, PW ,NAME FROM TEST </select> -->
+
+
+	<select id="selectMember" resultType="memberVO">
+		SELECT ID, PW ,NAME FROM TEST
+	</select>
+
+	<insert id="insertMember" parameterType="memberVO">
+    
+   <![CDATA[
+   
+	 INSERT INTO MEMBER
+	 
+	 (ID, PASSWORD, NAME, JUMIN, PHONE, REGION, profileImg, profileThumbImg) 
+	 
+	 VALUES
+	 
+	 (#{id}, #{password}, #{name}, #{jumin}, #{phone}, #{region}, #{profileImg}, #{profileThumbImg})
+	]]>
+
+	</insert>
+
+	<select id="loginMember" parameterType="memberVO"
+		resultType="memberVO">
+
+		SELECT
+		ID
+		,PASSWORD
+		,NAME
+		,JUMIN
+		,PHONE
+		,REGION
+		,PROFILEIMG
+		,SIGNDATE
+
+		FROM MEMBER
+		WHERE
+		ID = #{id} AND
+		PASSWORD = #{password}
+
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		UPDATE MEMBER SET
+		PASSWORD = #{password},
+		NAME = #{name},
+		PHONE = #{phone},
+		REGION = #{region}
+
+		WHERE ID = #{id}
+	</update>
+
+	<select id="myProfile" parameterType="memberProfileVO"
+		resultType="memberProfileVO">
+		SELECT
+		member.id, member.name, member.jumin, member.phone, member.region, member.profileImg,
+		member.profileThumbImg,
+		memberdetail.comment, memberdetail.url, memberdetail.portfolio_name,
+		memberdetail.portfolio_path
+		FROM MEMBER
+		LEFT JOIN MEMBERDETAIL
+		ON MEMBER.id = MEMBERDETAIL.id
+		WHERE MEMBER.id = #{id}
+
+	</select>
+
+
 
 </mapper>

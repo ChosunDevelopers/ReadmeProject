@@ -1,0 +1,30 @@
+h1 {
+	color: #2C3E50;
+}
+
+.wrapper {
+	width : 100vw;
+	
+}
+
+.content {
+	width : 50%;
+	height : 500px;
+	margin : 0 auto;
+	border : 1px solid #1ABC9C;
+	text-align : center;
+}
+
+.loginBox{
+	border : 2px solid #1ABC9C; 
+	border-radius : 5px;
+}
+S
+.loginLabel{
+	font-size : 30px;
+}
+
+.loginButton{
+	background-color : #1ABC9C;
+	border : none;
+}
