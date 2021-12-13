@@ -20,8 +20,8 @@
     </style>
 <title>Insert title here</title>
 </head>
-<body>
-<div id="page-top">
+<body>	
+		<div id="page-top">
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
                 <div class="container">
