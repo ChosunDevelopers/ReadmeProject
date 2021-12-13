@@ -66,7 +66,7 @@
 <div class="container">
         	<div class="row gx-4 gx-lg-5 align-items-center my-5">
 				<div class="col-lg-3">
-					<img class="img-fluid rounded mb-4 mb-lg-0" src="../../../resources/images/cat.png" alt="profile">
+					<img src = "<spring:url value = '/image/${myProfile.profileThumbImg }'/>"/>		
 				</div>        
 				<div class="col">
 					<p>이름: <span>${myProfile.name}</span></p>
@@ -77,6 +77,9 @@
 					<p>생년월일 : ${myProfile.jumin}</p>
 					<p>핸드폰번호 : ${myProfile.phone}</p>
 				</div>		
+				<div class = "col">
+					<a href = "/login/updateMemberPage">회원정보 수정</a>
+				</div>
         	</div>
         	<hr>
         	<div class="mySkill">
@@ -94,6 +97,9 @@
 			<div class="memberPortfolio">
 				<p>포트폴리오 url : <a href = "${myProfile.url}">${myProfile.url}</a></p>
 				<p>첨부파일 : ${myProfile.portfolio_name}</p>
+			</div>
+			<div class = "memberUpdateDetail">
+				<a href = "/login/insertmemberDetailPage">추가정보 수정</a>
 			</div>
 			<hr>
 			   

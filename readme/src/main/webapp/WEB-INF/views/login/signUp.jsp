@@ -111,8 +111,9 @@
   <%= request.getRealPath("/") %>
 </div>
 
-
-
+<p>this is just for test it has not function</p>
+<p>this is too just for test. it has not any function</p>
+<p>this is too just for test. it has not any functiosssdfn</p>
 
 <div class="inputArea">
  <button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
