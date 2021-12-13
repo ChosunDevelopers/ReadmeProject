@@ -17,4 +17,6 @@ public interface MemberService {
 	
 	public MemberProfileVO myProfile(MemberProfileVO memberProfileVO);
 	
+	public List<MemberVO> listMember() throws Exception;
+	
 }

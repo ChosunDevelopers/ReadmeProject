@@ -69,6 +69,12 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(Namespace + ".myProfile", memberProfileVO);
 	}
+
+	@Override
+	public List<MemberVO> listMember() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(Namespace+".listMember");
+	}
 	
 	
 

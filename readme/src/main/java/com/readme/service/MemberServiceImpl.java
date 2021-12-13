@@ -51,5 +51,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+	@Override
+	public List<MemberVO> listMember() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listMember();
+	}
+
+
 
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.readme.mapper.skillRelMapper">
+
+<select id="listSkillRel" resultType="skillRelVO">
+	SELECT ID,
+		   SKILL,
+		   NAME
+	FROM MEMBER_SKILL_REL
+</select>
+
+<select id="getSkillList" resultType="skillRelVO" parameterType="String">
+	<![CDATA[
+	SELECT ID,
+		   SKILL,
+		   NAME
+	FROM MEMBER_SKILL_REL
+	WHERE SKILL LIKE CONCAT('%',#{skill},'%')
+	]]>
+</select> 
+
+<select id="getSkillListForName" resultType="skillRelVO" parameterType="String">
+	<![CDATA[
+	SELECT ID,
+		   SKILL,
+		   NAME
+	FROM MEMBER_SKILL_REL
+	WHERE NAME LIKE CONCAT('%',#{skill},'%')
+	]]>
+</select> 
+
+<select id="getUserSkillList" resultType="String" parameterType="String">
+	SELECT SKILL
+	FROM MEMBER_SKILL_REL
+	WHERE ID = #{id}
+</select>
+</mapper>
+ 

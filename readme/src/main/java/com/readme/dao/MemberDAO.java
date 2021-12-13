@@ -16,5 +16,7 @@ public interface MemberDAO {
 	public int memberUpdate(MemberVO memberVO);
 	
 	public MemberProfileVO myProfile(MemberProfileVO memberProfileVO);
+
+	public List<MemberVO> listMember();
 	
 }
