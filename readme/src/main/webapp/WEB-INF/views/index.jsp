@@ -76,7 +76,7 @@
 
 
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-dark" href="/teamBoard/teamBoard">
+                    <a class="btn btn-xl btn-outline-dark" href="/list">
                         <i class="fas fa-download me-2"></i>
                         자세히 보기
                     </a>

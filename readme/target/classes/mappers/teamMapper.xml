@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.readme.mapper.teamMapper">
+
+<!--   
+        <select id="selectMember" resultType="com.readme.dto.MemberVO" >
+            SELECT ID, PW ,NAME FROM TEST
+        </select>
+-->
+ 
+ 
+ 
+<!-- 댓글 조회 -->
+	<select id="reply" parameterType="hashMap" resultType="hashMap">
+    	SELECT
+    		  RNO, BNO, ID, COMMENT, REGDATE
+    	 FROM TEAMBOARDREPLY
+    	WHERE teamboard_bno = #{teamboardBno}
+	</select>
+	
+	
+ <select id="select_list" parameterType="hashMap" resultType="hashMap">  
+<![CDATA[  
+select  
+teamBoard_bno,  
+id,  
+title,  
+comment,  
+regDate  
+from  
+teamBoard
+where 1 = 1 
+]]>  
+<if test="keyword != null and keyword != ''">  
+and (title like CONCAT('%',#{keyword},'%') or comment like CONCAT('%',#{keyword},'%'))  
+</if>  
+order by regDate desc  
+</select>  
+
+<delete id="delete_board" parameterType="hashMap">  
+<![CDATA[  
+delete from teamboard  
+where  
+teamboard_bno = #{teamboardBno}  
+]]>  
+</delete>  
+
+ <insert id="insertboard" parameterType="hashMap" useGeneratedKeys="true" keyProperty="teamBoard_bno">  
+    <![CDATA[
+    insert into teamboard
+    (title, comment, maxteam) 
+    values
+    (#{title}, #{comment}, #{maxteam})
+    ]]>
+</insert>
+ 
+ <update id="update_board" parameterType="hashMap">  
+<![CDATA[  
+	update teamboard set  
+	title = #{title},  
+	comment = #{comment}
+	where  
+	teamboard_bno = #{teamboardBno}  
+]]>  
+</update>   
+ <select id="select_board" parameterType="hashMap" resultType="hashMap">
+    <![CDATA[
+        select
+        title,
+        id,
+        comment,
+        regDate,
+        maxteam 
+        from
+        teamboard
+        where
+        teamboard_bno = #{teamboardBno}   
+    ]]> 
+</select>
+ 
+ 
+
+</mapper>
