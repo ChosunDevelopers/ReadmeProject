@@ -13,7 +13,7 @@ public class MemberProfileVO {
 	private String url;
 	private String portfolio_name;
 	private String portfolio_path;
-	
+	private String skill;
 	
 	
 	
@@ -84,6 +84,12 @@ public class MemberProfileVO {
 	}
 	public void setPortfolio_path(String portfolio_path) {
 		this.portfolio_path = portfolio_path;
+	}
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
 	}
 	
 	

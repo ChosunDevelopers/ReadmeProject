@@ -32,14 +32,14 @@
 		resultType="memberVO">
 
 		SELECT
-		ID
-		,PASSWORD
-		,NAME
-		,JUMIN
-		,PHONE
-		,REGION
-		,PROFILEIMG
-		,SIGNDATE
+			ID
+			,PASSWORD
+			,NAME
+			,JUMIN
+			,PHONE
+			,REGION
+			,PROFILEIMG
+			,SIGNDATE
 
 		FROM MEMBER
 		WHERE
@@ -51,10 +51,10 @@
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate">
 		UPDATE MEMBER SET
-		PASSWORD = #{password},
-		NAME = #{name},
-		PHONE = #{phone},
-		REGION = #{region}
+			PASSWORD = #{password},
+			NAME = #{name},
+			PHONE = #{phone},
+			REGION = #{region}
 
 		WHERE ID = #{id}
 	</update>
@@ -62,13 +62,16 @@
 	<select id="myProfile" parameterType="memberProfileVO"
 		resultType="memberProfileVO">
 		SELECT
-		member.id, member.name, member.jumin, member.phone, member.region, member.profileImg,
-		member.profileThumbImg,
-		memberdetail.comment, memberdetail.url, memberdetail.portfolio_name,
-		memberdetail.portfolio_path
+			member.id, member.name, member.jumin, member.phone, member.region, member.profileImg,
+			member.profileThumbImg,
+			memberdetail.comment, memberdetail.url, memberdetail.portfolio_name,
+			memberdetail.portfolio_path,
+   			member_skill_rel.skill
 		FROM MEMBER
 		LEFT JOIN MEMBERDETAIL
 		ON MEMBER.id = MEMBERDETAIL.id
+    	LEFT JOIN MEMBER_SKILL_REL
+    	ON MEMBER.id = MEMBER_SKILL_REL.id
 		WHERE MEMBER.id = #{id}
 
 	</select>
