@@ -2,7 +2,6 @@ package com.readme.controller;
 
 import java.io.File;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -32,7 +31,6 @@ public class MemberController {
 	@Autowired
 	MemberDetailService mDetailService;
 
-	@Resource(name = "uploadPath")
 	private String uploadPath;
 
 	// 회원가입 동작

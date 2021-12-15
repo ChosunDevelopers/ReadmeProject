@@ -3,9 +3,12 @@ package com.readme.service;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.readme.controller.TeamBoardController;
 import com.readme.dao.TeamBoardDAO;
 
 @Service
@@ -14,7 +17,8 @@ public class TeamBoardServiceImpl implements TeamBoardService {
 	@Autowired
 	TeamBoardDAO teamBoardDAO; 
 	
-	
+
+    private static final Logger logger = LoggerFactory.getLogger(TeamBoardServiceImpl.class);
 	@Override
 	public String create(Map<String, Object> map) {
 		int affectRowCount = this.teamBoardDAO.insert(map);
@@ -24,6 +28,7 @@ public class TeamBoardServiceImpl implements TeamBoardService {
 		
 		return null;
 	}
+	
 	
 	@Override  
 	public boolean edit(Map<String, Object> map) {  
@@ -46,10 +51,5 @@ public class TeamBoardServiceImpl implements TeamBoardService {
 	public List<Map<String, Object>> list(Map<String, Object> map){  
 		return this.teamBoardDAO.selectList(map);
 	}  
-	
-	@Override  
-	public List<Map<String, Object>> readReply(Map<String, Object> map){  
-		return this.teamBoardDAO.readReply(map);
-	} 
 	
 }
