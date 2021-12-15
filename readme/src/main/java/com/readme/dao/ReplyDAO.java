@@ -13,6 +13,7 @@ public interface ReplyDAO {
 
 	// ´ñ±Û Á¶È¸
 	public void write(ReplyVO vo) throws Exception;
+	
 	//Æ¯Á¤ ´ñ±Û Á¶È¸
 	public ReplyVO readReplySelect(int rno) throws Exception;
 

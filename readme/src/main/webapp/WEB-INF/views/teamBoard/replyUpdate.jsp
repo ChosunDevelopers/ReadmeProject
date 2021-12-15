@@ -37,7 +37,7 @@
     
     // 취소 버튼 클릭
     $("#cancel_btn").click(function(){   
-     self.location = "/detail?teamboardBno=${readReply.bno}"
+     self.location = "/teamBoard/detail?teamboardBno=${readReply.bno}"
      + "&page=${scri.page}"
      + "&perPageNum=${scri.perPageNum}"
      + "&searchType=${scri.searchType}"

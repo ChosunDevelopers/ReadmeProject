@@ -103,16 +103,18 @@
 
 					<script>
 					  $(".replyUpdate").click(function(){
-					   self.location = "/teamboard/replyUpdate?bno=${read.bno}"
+					   	console.log('수정');
+						  self.location = "/teamBoard/replyUpdate?bno=${teamboardBno}"
 					    + "&page=${scri.page}"
 					    + "&perPageNum=${scri.perPageNum}"
 					    + "&searchType=${scri.searchType}"
 					    + "&keyword=${scri.keyword}"
-					    + "&rno=" + $(this).attr("data-rno");        
+					    + "&rno=" +  $(this).attr("data-rno");      
 					  });
 					  
 					  $(".replyDelete").click(function(){
-					   self.location = "/teamboard/replyDelete?bno=${read.bno}"
+						console.log('삭제');	  
+					   self.location = "/teamBoard/replyDelete?bno=${teamboardBno}"
 					    + "&page=${scri.page}"
 					    + "&perPageNum=${scri.perPageNum}"
 					    + "&searchType=${scri.searchType}"
