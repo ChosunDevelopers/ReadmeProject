@@ -9,6 +9,7 @@
             <typeAlias type="com.readme.dto.MemberDetailVO" alias="memberDetailVO"/>
             <typeAlias type="com.readme.dto.MemberProfileVO" alias="memberProfileVO"/>
             <typeAlias type="com.readme.dto.SkillRelVO" alias="skillRelVO"/>
+            <typeAlias type="com.readme.dto.NoticeVO" alias="noticeVO" />
         </typeAliases>
         
         
