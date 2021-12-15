@@ -21,6 +21,7 @@
         }
     </style>
 <title>Insert title here</title>
+
 <script>
 	function doing() {
 		const test = document.getElementById("profieImgTest");
@@ -61,8 +62,7 @@
             </nav>    
         </div>
 
-        
-	<h1>This is MyProfile Page</h1>
+    <h1> '${loginID }' Profile</h1>
 <div class="container">
         	<div class="row gx-4 gx-lg-5 align-items-center my-5">
 				<div class="col-lg-3">
@@ -95,11 +95,18 @@
 			</div>
 			<hr>
 			<div class="memberPortfolio">
-				<p>포트폴리오 url : <a href = "${myProfile.url}">${myProfile.url}</a></p>
+				<h3>프토폴리오</h3>
+				<p>url : <a href = "${myProfile.url}">${myProfile.url}</a></p>
 				<p>첨부파일 : ${myProfile.portfolio_name}</p>
+				<span>${myProfile.portfolio_path }</span><br/>
+				<span>"<spring:url value = '/image/${myProfile.portfolio_path }'/>"</span>
+				<a href = "<spring:url value = '/image/${myProfile.portfolio_path }'/>" 
+					download = "${myProfile.portfolio_name}">첨부파일 다운로드</a>
+				<a href="<c:url value = '/image/${myProfile.portfolio_path}'/>"/>file download test</a>
 			</div>
+			<hr>
 			<div class = "memberUpdateDetail">
-				<a href = "/login/insertmemberDetailPage">추가정보 수정</a>
+				<a href = "/login/insertMemberDetailPage">추가정보 수정</a>
 			</div>
 			<hr>
 			   
