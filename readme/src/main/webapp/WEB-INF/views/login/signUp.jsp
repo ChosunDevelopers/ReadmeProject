@@ -1,9 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../../resources/css/signUp.css">
 <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +29,7 @@
 </head>
 <body>
 <div id="page-top">
-            <!-- Navigation-->
+      <!-- Navigation-->
             <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
                 <div class="container">
                     <a class="navbar-brand" href="/index">Read Me</a>
@@ -52,73 +54,94 @@
                     </div>
                 </div>
             </nav>    
-        </div>
+ </div>
 
         
 
-<form role="form" method="post" action = "/member/insertMember" autocomplete="off" enctype="multipart/form-data">
+<div class = "wrapper">
+	<div class = "content">
+	<center>
+		<h1>Sign Up</h1>
+	</center>
+	
+	<form role="form" method="post" action = "/member/insertMember" autocomplete="off" enctype="multipart/form-data">
 
-<div class="inputArea">
- <label for="id">아이디</label>
- <input type="text" id="id" name="id" />
-</div>
-
-<div class="inputArea">
- <label for="password">비밀번호</label>
- <input type="text" id="password" name="password" />
-</div>
-
-<div class="inputArea">
- <label for="name">이름</label>
- <input type="text" id="name" name="name" />
-</div>
-
-<div class="inputArea">
- <label for="jumin">생년월일</label>
- <input type="text" id="jumin" name="jumin" />
-</div>
-
-<div class="inputArea">
- <label for="phone">핸드폰번호</label>
- <input type="text" id="phone" name="phone" />
-</div>
-
-<div class="inputArea">
- <label for="region">지역</label>
- <input type="text" id="region" name="region" />
-</div>
-
-<div class="inputArea">
- <label for="profileImg">이미지</label>
- <input type="file" id="profileImg" name="file" />
- <div class="select_img"><img src="" /></div>
+	<span class = "loginLabel">ID</span>
+		<br/>
+		<input class="loginBox" type="text" name="id" placeholder="email@gmail.com"/>
+		<br/><br/>
+		
+	<span class = "loginLabel">비밀번호</span>
+		<br/>
+		<input class="loginBox" type="password" name="password"/>
+		<br/><br/>
+		
+	<span class = "loginLabel">이름</span>
+		<br/>
+		<input class="loginBox" type="text" name="name"/>
+		<br/><br/>
+		
+	<span class = "loginLabel">생년월일</span>
+		<br/>
+		<input class="loginBox" type="text" name="jumin"/>
+		<br/><br/>
+		
+	<span class = "loginLabel">핸드폰번호</span>
+		<br/>
+		<input class="loginBox" type="text" name="phone"/>
+		<br/><br/>
+		
+	<span class = "loginLabel">지역</span>
+	 <br/>
+	 <select class = "loginBox" name = "region" id = "region">
+	 	<option value = "서울특별시">서울특별시</option>
+	 	<option value = "경기도">경기도</option>
+	 	<option value = "대전광역시">대전광역시</option>
+	 	<option value = "세종특별자치시">세종특별자치시</option>
+	 	<option value = "광주광역시">광주광역시</option>
+	 	<option value = "부산광역시">부산광역시</option>
+	 	<option value = "대구광역시">대구광역시</option>
+	 	<option value = "울산광역시">울산광역시</option>
+	 	<option value = "제주특별자치도">제주특별자치도</option>
+	 	<option value = "강원도">강원도</option>
+	 	<option value = "충청도">충청도</option>
+	 	<option value = "경상도">경상도</option>
+	 	<option value = "전라도">전라도</option>
+	 </select>
+		<br/><br/>
+		
+	<span class = "loginLabel">프로필</span>
+		<br/>
+		<input type="file" id="profileImg" name="file" />
+		<br/>
+		<div class="select_img"><img src="" /></div>
  
  
  
  
- <script>
-  $("#profileImg").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(500);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
-  });
- </script>
+	 <script>
+	  $("#profileImg").change(function(){
+	   if(this.files && this.files[0]) {
+	    var reader = new FileReader;
+	    reader.onload = function(data) {
+	     $(".select_img img").attr("src", data.target.result).width(500);        
+	    }
+	    reader.readAsDataURL(this.files[0]);
+	   }
+	  });
+	 </script>
  
-  <%= request.getRealPath("/") %>
+  	
+	
+
+	<div class="inputArea">
+	 <button type="submit" id="register_Btn" class="btn btn-primary">Register</button>
+	</div>
+
+	</form>
+	</div>
 </div>
 
-<p>this is just for test it has not function</p>
-<p>this is too just for test. it has not any function</p>
-<p>this is too just for test. it has not any functiosssdfn</p>
 
-<div class="inputArea">
- <button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
-</div>
-
-</form>
 </body>
 </html>

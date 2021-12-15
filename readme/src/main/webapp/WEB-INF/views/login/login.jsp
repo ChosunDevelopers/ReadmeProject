@@ -54,15 +54,15 @@
 	<div class="wrapper">
 		<div class="content">
 			<center>
-				<h1>This is login Page</h1>
+				<h1>LOGIN</h1>
 			</center>
 
 			<form name="loginForm" action="/member/loginMember" method="POST">
 
 
-				<span class="loginLabel">id</span>
+				<span class="loginLabel">ID</span>
 				<br/>
-				<input class="loginBox" type="text" name="id" />
+				<input class="loginBox" type="text" name="id" placeholder="email@gmail.com"/>
 				<br/><br/>
 				
 				
@@ -74,7 +74,8 @@
 				<input class="loginButton" type="submit" value="Login">
 			</form>
          
-			<br /> <a href="./signUp">SignUp</a>
+			<br /> 
+			<button class = "signUpButton"><a  href="./signUp">SignUp</a></button>
 
 		</div>
 	</div>
