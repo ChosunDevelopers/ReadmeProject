@@ -7,25 +7,7 @@
 
 	<!-- <select id="selectMember" resultType="com.readme.dto.MemberVO" > SELECT 
 		ID, PW ,NAME FROM TEST </select> -->
-	<insert id="writeReply" parameterType="hashMap"
-		useGeneratedKeys="true" keyProperty="teamBoard_bno">
-	<![CDATA[
-	insert into (bno, id, comment)
-	values (#{teamboardBno},#{loginID},#{comment})
-	 ]]>
-	</insert>
-
-
-
-	<!-- 댓글 조회 -->
-	<select id="readReply" parameterType="hashMap"
-		resultType="hashMap">
-	<![CDATA[
-    	select
-    		  rno, id, comment, regdate from teamboardreply
-    	where bno = #{teamboardBno}
-    	]]>
-	</select>
+	
 
 
 	<select id="select_list" parameterType="hashMap"

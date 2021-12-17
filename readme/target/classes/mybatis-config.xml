@@ -12,9 +12,9 @@
         </typeAliases>
         
         
-        
-<!--         <mappers>
+        <!-- 
+         <mappers>
         	<mapper resource = "mappers/memberMapper.xml" />
-        </mappers> -->
-        
+        </mappers> 
+         -->
     </configuration>

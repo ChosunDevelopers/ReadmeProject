@@ -38,7 +38,7 @@
 			</p>
 			
 			<p class = "from-group ">
-				<textarea class="form-control" rows="20" type="text" class="form-control"name="comment" 
+				<textarea class="form-control" rows="20" type="text" class="form-control" name="comment" 
 				placeholder="내용을 입력하세요.(시간, 장소, 진행 방식 등)" ></textarea>
 			</p>
 			
