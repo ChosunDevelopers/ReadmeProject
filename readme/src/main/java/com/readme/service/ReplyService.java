@@ -22,5 +22,5 @@ public interface ReplyService {
 	public void modify(ReplyVO vo) throws Exception;
 
 	// ¥Ò±€ ªË¡¶
-	public void delete(ReplyVO vo) throws Exception;
+	public void delete(int rno) throws Exception;
 }

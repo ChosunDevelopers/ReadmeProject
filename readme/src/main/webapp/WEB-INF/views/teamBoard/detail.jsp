@@ -8,14 +8,6 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
-		$(document).ready(function(){
-			$(".replyWriteBtn").on("click", function(){
-				  var formObj = $("form[name='replyForm']");
-				  formObj.attr("action", "/replyWrite");
-				  formObj.submit();
-				});
-	</script>
 
 </head>
 <body>
@@ -66,61 +58,19 @@
 
 		<!-- 댓글 시작 -->
 
-		<!-- <ul>
-			<li>
-				<div>
-					<p>첫번째 댓글 작성자</p>
-					<p>첫번째 댓글</p>
-				</div>
-			</li>
-			<li>
-				<div>
-					<p>두번째 댓글 작성자</p>
-					<p>두번째 댓글</p>
-				</div>
-			</li>
-			<li>
-				<div>
-					<p>세번째 댓글 작성자</p>
-					<p>세번째 댓글</p>
-				</div>
-			</li>
-		</ul> -->
 
 
 		<c:forEach items="${reply}" var="reply">
 			<li>
 				<div>
 					<p>${reply.id}
-						/
+						
 						<fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" />
 					</p>
+					<a href="/reply/delete?rno=${reply.rno}">댓글 삭제</a>
 					<p>${reply.comment }</p>
 				</div>
-				<p>
-					<button type="button" class="replyUpdate" data-rno="${repList.rno}">수정</button>
-					<button type="button" class="replyDelete" data-rno="${repList.rno}">삭제</button>
-
-					<script>
-					  $(".replyUpdate").click(function(){
-					   self.location = "/teamboard/replyUpdate?bno=${read.bno}"
-					    + "&page=${scri.page}"
-					    + "&perPageNum=${scri.perPageNum}"
-					    + "&searchType=${scri.searchType}"
-					    + "&keyword=${scri.keyword}"
-					    + "&rno=" + $(this).attr("data-rno");        
-					  });
-					  
-					  $(".replyDelete").click(function(){
-					   self.location = "/teamboard/replyDelete?bno=${read.bno}"
-					    + "&page=${scri.page}"
-					    + "&perPageNum=${scri.perPageNum}"
-					    + "&searchType=${scri.searchType}"
-					    + "&keyword=${scri.keyword}"
-					    + "&rno=" + $(this).attr("data-rno"); 
-					  });       
-					 </script>
-				</p>
+			
 			</li>
 		</c:forEach>
 

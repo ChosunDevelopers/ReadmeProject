@@ -133,4 +133,13 @@ public class TeamBoardController {
 		mav.setViewName("/teamBoard/list");  
 		return mav;  
 	}  
+	
+//	// 댓글 삭제
+//	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+//	public String getDelete(@RequestParam("rno") int rno) throws Exception {
+//		  
+//		replyService.delete(rno);  
+//
+//		 return "redirect:/detail";
+//	}
 }
