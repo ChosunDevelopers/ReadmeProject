@@ -48,48 +48,102 @@
                     </div>
                 </div>
             </nav>    
-        </div>
+</div>
 
         
-<h1>This is MyPage</h1>
 
 
+
+<!-- 나의 프로필 Section-->
+  <section class="page-section board" id="board">
+      <div class="container">
+          <!-- 팀 찾기 Section Heading-->
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">나의 프로필</h2>
+          <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+
+
+            <div class="text-center mt-4">
+               <i class="fas fa-download me-2"></i>
+               <form action = "/member/myProfile" method = "GET">
+					<input type = "hidden" name = "id" value = "${loginID }" />
+					<input type = "submit" class = "submitBtnBlack" value = "자세히 보기">
+			   </form>	
+            </div>
+       </div>
+</section>
+	
+<!-- 지원공고 관리 Section-->
+ <section class="page-section bg-primary text-white mb-0" id="find">
+     <div class="container">
+         <!-- 팀원 찾기 Section Heading-->
+         <h2 class="page-section-heading text-center text-uppercase text-white">내가 지원한 공고</h2>
+         <!-- Icon Divider-->
+         <div class="divider-custom divider-light">
+             <div class="divider-custom-line"></div>
+             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+             <div class="divider-custom-line"></div>
+         </div>
+         <div class="text-center mt-4">
+             <a class="btn btn-xl btn-outline-light" href="#">
+                 <i class="fas fa-download me-2"></i>
+                 자세히 보기
+             </a>
+         </div>
+     </div>
+</section>
+
+
+<!-- 관심 공고  Section-->
+<section class="page-section board" id="board">
+    <div class="container">
+        <!-- 팀 찾기 Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">관심 공고</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+
+        <div class="text-center mt-4">
+            <a class="btn btn-xl btn-outline-dark" href="#">
+                <i class="fas fa-download me-2"></i>
+                자세히 보기
+            </a>
+        </div>
+    </div>
+</section>
 
 	
-<table>
-	<tr>
-		<td>
-			<form action = "/member/myProfile" method = "GET">
-				<input type = "hidden" name = "id" value = "${loginID }" />
-				<input type = "submit" value = "나의 프로필">
-			</form>		
-		</td>
-	</tr>
-	
-	<tr>
-		<td>
-			<a class = "link" href = "/login/applicationNotice">지원공고관리</a>
-		</td>	
-	</tr>
-	<tr>
-		<td>
-			<a class = "link" href = "/login/favoNotice">관심공고관리</a>
-			
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<a class = "link" href = "/login/favoMember">관심사용자관리</a>
-			
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<a class = "link" href = "/login/memberDeleteView">회원탈퇴</a>
-			
-		</td>
-	</tr>
-</table>
+<!-- 관심 사용자 관리 Section-->
+ <section class="page-section bg-primary text-white mb-0" id="find">
+     <div class="container">
+         <!-- 팀원 찾기 Section Heading-->
+         <h2 class="page-section-heading text-center text-uppercase text-white">찜한 팀원</h2>
+         <!-- Icon Divider-->
+         <div class="divider-custom divider-light">
+             <div class="divider-custom-line"></div>
+             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+             <div class="divider-custom-line"></div>
+         </div>
+         <div class="text-center mt-4">
+             <a class="btn btn-xl btn-outline-light" href="#">
+                 <i class="fas fa-download me-2"></i>
+                 자세히 보기
+             </a>
+         </div>
+     </div>
+</section>
+
+
+
+
 
 
 
