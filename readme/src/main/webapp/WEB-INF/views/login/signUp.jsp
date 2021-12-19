@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../../resources/css/signUp.css">
+
 <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
         	display: flex;
         }
     </style>
-
+<link rel="stylesheet" href="../../resources/css/signUp.css">
 </head>
 <body>
 <div id="page-top">
@@ -61,7 +61,7 @@
 <div class = "wrapper">
 	<div class = "content">
 	<center>
-		<h1>Sign Up</h1>
+		<h1 class = "pageTitle">Sign Up</h1>
 	</center>
 	
 	<form role="form" method="post" action = "/member/insertMember" autocomplete="off" enctype="multipart/form-data">
@@ -78,17 +78,17 @@
 		
 	<span class = "loginLabel">이름</span>
 		<br/>
-		<input class="loginBox" type="text" name="name"/>
+		<input class="loginBox" type="text" name="name" placeholder = "홍길동"/>
 		<br/><br/>
 		
 	<span class = "loginLabel">생년월일</span>
 		<br/>
-		<input class="loginBox" type="text" name="jumin"/>
+		<input class="loginBox" type="text" name="jumin" placeholder = "YYYYMMDD"/>
 		<br/><br/>
 		
 	<span class = "loginLabel">핸드폰번호</span>
 		<br/>
-		<input class="loginBox" type="text" name="phone"/>
+		<input class="loginBox" type="text" name="phone" />
 		<br/><br/>
 		
 	<span class = "loginLabel">지역</span>
@@ -112,7 +112,7 @@
 		
 	<span class = "loginLabel">프로필</span>
 		<br/>
-		<input type="file" id="profileImg" name="file" />
+		<input class = "signUpButton" type="file" id="profileImg" name="file" />
 		<br/>
 		<div class="select_img"><img src="" /></div>
  

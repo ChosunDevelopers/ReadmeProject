@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../../resources/css/login.css">
+
 <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +20,7 @@
         }
     </style>
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../resources/css/login.css">
 </head>
 <body>	
 		<div id="page-top">
@@ -54,19 +55,19 @@
 	<div class="wrapper">
 		<div class="content">
 			<center>
-				<h1>LOGIN</h1>
+				<h1 class = "pageTitle">LOGIN</h1>
 			</center>
 
-			<form name="loginForm" action="/member/loginMember" method="POST">
+			<form role = "form" action="/member/loginMember" method="POST">
 
 
-				<span class="loginLabel">ID</span>
+				<span class="loginLabel" style = "font-size:25px">ID</span>
 				<br/>
 				<input class="loginBox" type="text" name="id" placeholder="email@gmail.com"/>
 				<br/><br/>
 				
 				
-				<span class="loginLabel">password</span>
+				<span class="loginLabel" style = "font-size:25px">password</span>
 				<br/>
 				<input class="loginBox" type="password" name="password" /> 
 				<br/><br/> 
