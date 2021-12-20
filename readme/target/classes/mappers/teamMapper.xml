@@ -42,9 +42,9 @@ teamboard_bno = #{teamboardBno}
 		useGeneratedKeys="true" keyProperty="teamBoard_bno">  
     <![CDATA[
     insert into teamboard
-    (title, comment, maxteam) 
+    (id, title, comment, maxteam) 
     values
-    (#{title}, #{comment}, #{maxteam})
+    (#{id}, #{title}, #{comment}, #{maxteam})
     ]]>
 	</insert>
 
