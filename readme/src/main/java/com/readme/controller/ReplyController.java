@@ -36,11 +36,12 @@ public class ReplyController {
 	}
 
 	// ¥Ò±€ ªË¡¶
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String getDelete(@RequestParam("rno") int rno) throws Exception {
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String getDelete(@RequestParam("rno") int rno,@RequestParam("bno") int bno) throws Exception {
 	  
 		replyService.delete(rno);  
 		
-		return "redirect:/teamBoard/list";
+		//return "redirect:/detail?teambaordBno="+ 1;
+		return "redirect:/detail?teamboardBno=" + bno;
 	}
 }

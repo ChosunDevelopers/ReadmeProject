@@ -9,11 +9,11 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <style>
-        #likeButton{
-			cursor: pointer;
-			width: 75px;
-			height: 75px;        
-        }
+#likeButton {
+	cursor: pointer;
+	width: 75px;
+	height: 75px;
+}
 </style>
 </head>
 <body>
@@ -41,12 +41,13 @@
 						pattern="yyyy.MM.dd HH:mm:ss" />
 				</p>
 				<p>모집인원 : ${data.maxteam }</p>
-				
+
 				<!-- 게시글 좋아요 -->
 				<div class="col" id="divLikeButton">
-					<img alt="dislike" src="../../../resources/images/dislike.png" id="likeButton">
-				</div>						
-				
+					<img alt="dislike" src="../../../resources/images/dislike.png"
+						id="likeButton">
+				</div>
+
 				<blockquote class="pull-right">
 					<p>
 						<a class="btn btn-sm btn-primary"
@@ -76,13 +77,23 @@
 			<li>
 				<div>
 					<p>${reply.id}
-						
+
 						<fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" />
 					</p>
-					<a href="/reply/delete?rno=${reply.rno}">댓글 삭제</a>
+
 					<p>${reply.comment }</p>
+					<form method="POST" action="/reply/delete?rno=${reply.rno}">
+
+						<input type="hidden" name="bno" value="${teamboardBno}">
+								
+						<p>
+							<button type="submit">삭제</button>
+						</p>
+					</form>
+					<%--<a href="/reply/delete?rno=${reply.rno}">댓글 삭제</a> --%>
+
 				</div>
-			
+
 			</li>
 		</c:forEach>
 
@@ -103,10 +114,10 @@
 			</form>
 
 		</div>
-<input type = "hidden" value="${yourId }" id="sessionId">
-<input type = "hidden" value="${teamboardBno }" id="BoardBno">
+		<input type="hidden" value="${yourId }" id="sessionId"> <input
+			type="hidden" value="${teamboardBno }" id="BoardBno">
 
-<script>
+		<script>
 $(document).ready(function like_func(){
 	var myId = $('#sessionId').val();
 	var bno = $("#BoardBno").val();
@@ -213,7 +224,6 @@ function go3(likeDislike){
 	} 	
 }
 
-</script>		
-
+</script>
 </body>
 </html>
