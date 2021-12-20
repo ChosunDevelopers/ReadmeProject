@@ -53,8 +53,11 @@
 		UPDATE MEMBER SET
 		PASSWORD = #{password},
 		NAME = #{name},
+		JUMIN = #{jumin},
 		PHONE = #{phone},
-		REGION = #{region}
+		REGION = #{region},
+		profileImg = #{profileImg},
+		profileThumbImg = #{profileThumbImg}
 
 		WHERE ID = #{id}
 	</update>
@@ -96,5 +99,13 @@
 		FROM MEMBER
 		WHERE ID = #{id}
 	</select>
+	
+	<select id = "idcheck" parameterType = "String" resultType = "Integer">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE 
+		ID = #{email}
+	
+	</select>
+	
 	
 </mapper>

@@ -1,7 +1,7 @@
 package com.readme.service;
 
 import java.util.List;
-
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -63,4 +63,13 @@ public class MemberServiceImpl implements MemberService {
 		return dao.specificMember(id);
 	}
 
+
+	@Override
+	public int idcheck(String email) {
+		// TODO Auto-generated method stub
+		return dao.idcheck(email);
+	}
+
+
+	
 }

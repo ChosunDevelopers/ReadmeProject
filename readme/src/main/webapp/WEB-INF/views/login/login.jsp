@@ -21,6 +21,27 @@
     </style>
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../resources/css/login.css">
+<script>
+ function validate() {
+	 var email = document.getElementById("email");
+	 
+	 if(!chk(/^[\w]{4,}@[\w]+(\.[\w-]+){1,3}$/, email, "이메일 형식에 어긋납니다."))
+         return false;
+ }
+ 
+ function chk(re, e, msg) {
+
+	 if (re.test(e.value)) {
+             return true;
+     }
+
+     alert(msg);
+     e.value = "";
+     e.focus();
+     return false;
+ } 
+
+</script>
 </head>
 <body>	
 		<div id="page-top">
@@ -58,12 +79,12 @@
 				<h1 class = "pageTitle">LOGIN</h1>
 			</center>
 
-			<form role = "form" action="/member/loginMember" method="POST">
+			<form onsubmit = "return validate();"  role = "form" action="/member/loginMember" method="POST">
 
 
 				<span class="loginLabel" style = "font-size:25px">ID</span>
 				<br/>
-				<input class="loginBox" type="text" name="id" placeholder="email@gmail.com"/>
+				<input id = "email" class="loginBox" type="text" name="id" placeholder="email@gmail.com"/>
 				<br/><br/>
 				
 				

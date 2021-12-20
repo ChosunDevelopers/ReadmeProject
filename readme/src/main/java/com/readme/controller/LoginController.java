@@ -1,7 +1,14 @@
 package com.readme.controller;
 
+import java.io.File;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.readme.dto.MemberVO;
+import com.readme.utils.UploadFileUtils;
 
 
 @Controller
@@ -37,4 +44,6 @@ public class LoginController {
 	public String myProfile() {
 		return "login/myProfile";
 	}
+	
+	
 }

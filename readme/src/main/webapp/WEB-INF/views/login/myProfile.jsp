@@ -62,7 +62,7 @@
             </nav>    
         </div>
 
-    <h1> '${loginID }' Profile</h1>
+    <h1 class = "profileTitle"> ${loginID } Profile</h1>
 <div class="container">
         	<div class="row gx-4 gx-lg-5 align-items-center my-5">
 				<div class="col-lg-3">
@@ -83,19 +83,19 @@
         	</div>
         	<hr>
         	<div class="mySkill">
-				<h3>보유 스킬</h3>
+				<h3 class = "profileTitle">보유 스킬</h3>
 				<h6>${myProfile.skill}</h6>
 				<br>
 				
 			</div>
 			<hr>
 			<div class="memberComment">
-				<h3>자기소개</h3>
+				<h3 class = "profileTitle">자기소개</h3>
 				<p>${myProfile.comment }</p>
 			</div>
 			<hr>
 			<div class="memberPortfolio">
-				<h3>프토폴리오</h3>
+				<h3 class = "profileTitle">프토폴리오</h3>
 				<p>url : <a href = "${myProfile.url}">${myProfile.url}</a></p>
 				<p>첨부파일 : ${myProfile.portfolio_name}</p>
 				<span>${myProfile.portfolio_path }</span><br/>

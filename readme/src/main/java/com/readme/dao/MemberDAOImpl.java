@@ -1,6 +1,7 @@
 package com.readme.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -81,6 +82,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<MemberVO> specificMember(String id) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(Namespace + ".specificMember", id);
+	}
+
+	@Override
+	public int idcheck(String email) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(Namespace + ".idcheck", email );
 	}
 	
 	

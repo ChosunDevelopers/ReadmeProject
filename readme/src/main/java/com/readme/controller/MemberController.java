@@ -1,6 +1,8 @@
 package com.readme.controller;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -10,8 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.readme.dto.MemberDetailVO;
@@ -65,6 +69,36 @@ public class MemberController {
 		}
 
 
+		// 회원정보 수정 동작
+		@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+		public String postmemberUpdate(MemberVO memberVO, MultipartFile file) throws Exception{
+
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+			String fileName = null;
+			
+			logger.info("file는 : " + file);
+			
+			if (file != null) {
+				fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+			} else {
+				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			}
+			
+			memberVO.setProfileImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			memberVO.setProfileThumbImg(
+					File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+
+			int result = mService.memberUpdate(memberVO);
+			
+			if (result == 0) {
+//				model.addAttribute("message", "Update실패");
+				return "redirect:/index";
+			}
+
+			return "/login/myPage";
+		}
+
 	// 로그인 동작
 	@RequestMapping(value = "/loginMember", method = RequestMethod.POST)
 	public String loginMember(MemberVO memberVO, Model model, HttpSession session) {
@@ -95,21 +129,6 @@ public class MemberController {
 		session.invalidate();
 		// session.setAttrivute("loginID",null);으로 해줘도 된다.
 		return "redirect:/index";
-	}
-
-	// 회원정보 수정 동작
-	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
-	public String postmemberUpdate(MemberVO memberVO, Model model, HttpSession session) {
-
-		int result = 0;
-		result = mService.memberUpdate(memberVO);
-
-		if (result == 0) {
-			model.addAttribute("message", "Update실패");
-			return "redirect:/index";
-		}
-
-		return "/login/myPage";
 	}
 
 	// 추가정보입력 post
@@ -153,5 +172,19 @@ public class MemberController {
 		model.addAttribute("myProfile", result);
 		return "/login/myProfile";
 	}
+	
+	@RequestMapping(value = "/idcheck.do")
+    @ResponseBody
+    public Map<Object, Object> idcheck(@RequestBody String email) {
+        
+        int count = 0;
+        Map<Object, Object> map = new HashMap<Object, Object>();
+ 
+        count = mService.idcheck(email);
+        map.put("cnt", count);
+ 
+        return map;
+    }
+	
 
 }
