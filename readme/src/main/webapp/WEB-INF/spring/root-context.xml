@@ -39,7 +39,7 @@
    <context:component-scan base-package="com.readme.dao"></context:component-scan>
    <context:component-scan base-package="com.readme.service"></context:component-scan>
    <context:component-scan base-package="com.readme.utils"></context:component-scan>
- 
+   <context:component-scan base-package="com.readme.dto"/>
 </beans>
 
 

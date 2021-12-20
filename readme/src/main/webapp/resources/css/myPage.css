@@ -16,7 +16,22 @@ tr{
 	border-bottom : 30px solid white;
 }
 
-a{
+.link{
 	color : #2C3E50;
 	font-size : 30px;
+}
+
+.submitBtnBlack{
+	border : 2px solid #2C3E50;
+	border-radius :10px;
+	width : 214px;
+	height : 82px;
+	background-color : white;
+	font-size : 28px;
+	font-weight : 100px;
+}
+
+.submitBtnBlack:hover{
+	background-color : #2C3E50;
+	color : white;
 }

@@ -48,18 +48,18 @@
             </div>
         </nav>
         <!-- Masthead-->
-        
+        <video width="100%" height="auto" autoplay loop muted controls>
+					 <source src="../../resources/Commercial video for IT company ELEKS - How to Turn a Great Idea into a Software Product.mp4" type="video/mp4">
+		 </video> 
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
-            	<c:if test = "${loginID == null }">
+            	<%-- <c:if test = "${loginID == null }">
             		로그인이 되지않은 상태
             	</c:if>
             	<c:if test = "${loginID != null }">
             	${loginID} 로그인상태
-            	</c:if>
-            	<br/><br/>
-                <h1>사진 들어갈 곳</h1>
-                <h3>height는 알아서 늘어남</h3>
+            	</c:if> --%>
+            	<img src = "../../resources/images/ReadMeBackground.png">
             </div>
         </header>
         <!-- 팀 찾기 Section-->

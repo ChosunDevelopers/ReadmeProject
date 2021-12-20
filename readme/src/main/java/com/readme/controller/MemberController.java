@@ -2,6 +2,7 @@ package com.readme.controller;
 
 import java.io.File;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -31,36 +32,38 @@ public class MemberController {
 	@Autowired
 	MemberDetailService mDetailService;
 
+	@Resource(name = "uploadPath")
 	private String uploadPath;
 
 	// 회원가입 동작
-	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
-	public String insertMember(MemberVO memberVO, MultipartFile file) throws Exception {
+		@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
+		public String insertMember(MemberVO memberVO, MultipartFile file) throws Exception {
 
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-		String fileName = null;
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+			String fileName = null;
 
-		logger.info("file는 : " + file);
+			logger.info("file는 : " + file);
 
-		if (file != null) {
-			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
-		} else {
-			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			if (file != null) {
+				fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+			} else {
+				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			}
+
+			memberVO.setProfileImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			memberVO.setProfileThumbImg(
+					File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+
+			int result = mService.insertMember(memberVO);
+
+			if (result == 0) {
+//				model.addAttribute("message", "같은 아이디가 있습니다.");
+				return "/login/login";
+			}
+			return "redirect:/index";
 		}
 
-		memberVO.setProfileImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		memberVO.setProfileThumbImg(
-				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-
-		int result = mService.insertMember(memberVO);
-
-		if (result == 0) {
-//			model.addAttribute("message", "같은 아이디가 있습니다.");
-			return "/login/login";
-		}
-		return "redirect:/index";
-	}
 
 	// 로그인 동작
 	@RequestMapping(value = "/loginMember", method = RequestMethod.POST)

@@ -1,30 +1,55 @@
-h1 {
-	color: #2C3E50;
+@import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Jua&display=swap');
+
+.pageTitle{
+	font-family : 'Fuzzy Bubbles';
+	font-size : 90px;
+	color : #2C3E50;
 }
 
 .wrapper {
 	width : 100vw;
 	
 }
-
+body{
+	
+}
 .content {
 	width : 50%;
-	height : 500px;
+	
 	margin : 0 auto;
-	border : 1px solid #1ABC9C;
+	border : 5px solid #1ABC9C;
 	text-align : center;
+	padding-top : 100px;
+	padding-bottom : 60px;
+	margin-top : 30px;
 }
 
 .loginBox{
 	border : 2px solid #1ABC9C; 
 	border-radius : 5px;
 }
-S
+
 .loginLabel{
-	font-size : 30px;
+	font-size : 27px;
+	/* font-family : 'Smooch', cursive; */
+	font-family : 'Jua', sans-serif;
 }
 
 .loginButton{
 	background-color : #1ABC9C;
 	border : none;
+	width : 80px;
+	height : 35px;
+	border-radius:8px;
 }
+.signUpButton{
+	background-color : white;
+	border : 2px solid #1ABC9C;
+	width : 80px;
+	height : 35px;
+	border-radius:8px;
+	color : #1ABC9C;
+}
+
