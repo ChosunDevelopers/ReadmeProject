@@ -79,16 +79,16 @@
                      
                      alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
                      //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-                     /* $("#divInputId").addClass("has-error")
-                     $("#divInputId").removeClass("has-success") */
+                     $("#email").addClass("has-error")
+                     $("#email").removeClass("has-success") 
                      $("#email").focus();
                      
                  
                  } else {
                      alert("사용가능한 아이디입니다.");
                      //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-                     /* $("#divInputId").addClass("has-success")
-                     $("#divInputId").removeClass("has-error") */
+                     $("#email").addClass("has-success")
+                     $("#email").removeClass("has-error") 
                      /* $("#userpwd").focus(); */
                      //아이디가 중복하지 않으면  idck = 1 
                      idck = 1;
@@ -108,7 +108,8 @@
 </head>
 <body>
 
-<input type = "button" id = "idck" value = "id 중복체크a">
+<!-- <input type = "button" id = "idck" value = "id 중복체크a"> -->
+<!-- <button id = "idck" value = "ID 중복체크">ID 중복체크</button> -->
 <div id="page-top">
       <!-- Navigation-->
             <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -150,6 +151,7 @@
 	<span class = "loginLabel">ID</span>
 		<br/>
 		<input class="loginBox" type="text" id = "email" name="id" placeholder="email@gmail.com"/>
+		<button type = "button" id = "idck" value = "ID 중복체크">ID 중복체크</button>
 		<br/><br/>
 		
 	<span class = "loginLabel">비밀번호</span>
