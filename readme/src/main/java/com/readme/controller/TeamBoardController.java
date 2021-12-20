@@ -3,7 +3,7 @@ package com.readme.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,7 +54,10 @@ public class TeamBoardController {
 	
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public ModelAndView detail(@RequestParam Map<String, Object> map) throws Exception {
+	public ModelAndView detail(@RequestParam Map<String, Object> map,  HttpSession session, Model model) throws Exception {
+
+		String myId = (String)session.getAttribute("loginID");
+		model.addAttribute("yourId", myId);
 		Map<String, Object> detailMap = this.TeamboardService.board_detail(map);
 		
 		

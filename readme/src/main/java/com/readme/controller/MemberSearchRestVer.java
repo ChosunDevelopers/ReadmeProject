@@ -1,5 +1,6 @@
 package com.readme.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.readme.dto.MemberLikeVO;
 import com.readme.dto.MemberVO;
 import com.readme.dto.SkillRelVO;
+import com.readme.service.MemberLikeService;
 import com.readme.service.MemberService;
 import com.readme.service.SkillRelService;
 
@@ -27,7 +30,8 @@ public class MemberSearchRestVer {
 	private MemberService mService;
 	@Inject
 	private SkillRelService rService;
-	
+	@Inject
+	private MemberLikeService lService; 
 	
 	@RequestMapping(value = "/memberSearch", produces="application/json")
 	@ResponseBody
@@ -69,13 +73,58 @@ public class MemberSearchRestVer {
 		return skillRelList;
 	}
 	
-	/*
+
 	@RequestMapping(value="/memberLike", produces="application/json")
 	@ResponseBody
-	public String memberLike(String id, HttpSession session) {
-		String myId = (String)session.getAttribute("id");
-		//내 id랑, 현재 클릭한 사람의 id 가져와서 만들면 될듯
-		  일단 보류
+	public int memberLike(@RequestParam("id")String id, HttpSession session) throws Exception{
+		String myId = (String)session.getAttribute("loginID");
+		String currentMemberId = id;
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("yourId", myId);
+		hm.put("wish_id", currentMemberId);
+		
+		int likeResult = lService.memberLikeCheck(hm);
+		
+		int likeResultForView = 0;
+		
+		if(likeResult != 0) {
+			likeResultForView = 1;
+		} else {
+			likeResultForView = 0;
+		}
+		
+		
+		return likeResultForView;
 	}
-	*/
+
+	@RequestMapping(value="/nowDislike", produces="application/json")
+	@ResponseBody
+	public int nowDislike(@RequestParam("id") String id, HttpSession session) throws Exception{
+		String myId = (String)session.getAttribute("loginID");
+		String currentMemberId = id;
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("yourId", myId);
+		hm.put("wish_id", currentMemberId);
+		
+		int rs = lService.nowDislike(hm);
+		
+		return rs;
+	}
+	
+	@RequestMapping(value="/nowLike", produces="application/json")
+	@ResponseBody
+	public int nowLike(@RequestParam("id") String id, HttpSession session) throws Exception{
+		String myId = (String)session.getAttribute("loginID");
+		String currentMemberId = id;
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("yourId", myId);
+		hm.put("wish_id", currentMemberId);
+		
+		int rs = lService.nowLike(hm);
+		
+		return rs;		
+	}
 }

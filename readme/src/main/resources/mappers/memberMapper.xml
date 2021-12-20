@@ -84,4 +84,14 @@
         FROM MEMBER      
     </select>
 
+	<select id="specificMember" resultType="memberVO" parameterType="String">
+		SELECT ID,
+			   NAME,
+			   PHONE,
+			   JUMIN,
+			   REGION
+		FROM MEMBER
+		WHERE ID = #{id}
+	</select>
+	
 </mapper>

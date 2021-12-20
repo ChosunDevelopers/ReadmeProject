@@ -77,7 +77,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	
-
+	@Override
+	public List<MemberVO> specificMember(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(Namespace + ".specificMember", id);
+	}
 	
 	
 

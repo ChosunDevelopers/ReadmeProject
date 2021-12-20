@@ -19,4 +19,5 @@ public interface MemberDAO {
 
 	public List<MemberVO> listMember();
 	
+	public List<MemberVO> specificMember(String id);
 }

@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< Updated upstream
-Built-By: asus
-Build-Jdk: 17
-=======
 Built-By: KOREAIT
 Build-Jdk: 1.8.0_231
->>>>>>> Stashed changes
 Created-By: Maven Integration for Eclipse
 

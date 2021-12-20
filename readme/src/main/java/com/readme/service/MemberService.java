@@ -19,4 +19,5 @@ public interface MemberService {
 	
 	public List<MemberVO> listMember() throws Exception;
 	
+	public List<MemberVO> specificMember(String id);
 }

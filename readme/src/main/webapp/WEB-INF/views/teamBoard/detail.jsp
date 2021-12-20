@@ -8,7 +8,13 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+<style>
+        #likeButton{
+			cursor: pointer;
+			width: 75px;
+			height: 75px;        
+        }
+</style>
 </head>
 <body>
 	<script
@@ -35,6 +41,12 @@
 						pattern="yyyy.MM.dd HH:mm:ss" />
 				</p>
 				<p>모집인원 : ${data.maxteam }</p>
+				
+				<!-- 게시글 좋아요 -->
+				<div class="col" id="divLikeButton">
+					<img alt="dislike" src="../../../resources/images/dislike.png" id="likeButton">
+				</div>						
+				
 				<blockquote class="pull-right">
 					<p>
 						<a class="btn btn-sm btn-primary"
@@ -91,5 +103,117 @@
 			</form>
 
 		</div>
+<input type = "hidden" value="${yourId }" id="sessionId">
+<input type = "hidden" value="${teamboardBno }" id="BoardBno">
+
+<script>
+$(document).ready(function like_func(){
+	var myId = $('#sessionId').val();
+	var bno = $("#BoardBno").val();
+	$.ajax({
+		type:"GET",
+		url:"/teamBoardRest/boardLike",
+		data : {
+				id: myId,
+				bno : bno
+			   },
+		success : function(data){
+			go(data);
+		},
+		error: function(error){
+			console.log("오류 : " + error);
+		}
+	})
+})
+
+function go(data){
+	console.log(data);
+	if(data == 1){
+		go1();
+	} else {
+		go2();
+	}
+}
+
+function go1(){
+	var str = "<img alt='like' src='../../../resources/images/like.png' id='likeButton'>";
+	var divLikeButton = $("#divLikeButton");
+	divLikeButton.html(str);	
+}
+
+function go2(){
+	var str = "<img alt='dislike' src='../../../resources/images/dislike.png' id='likeButton'>";
+	var divLikeButton = $("#divLikeButton");
+	divLikeButton.html(str);	
+}
+
+$(document).on("click", "#likeButton", function(e){
+	e.preventDefault();
+	var uid = $("#sessionId").val();
+	
+	if(uid == ""){
+		alert("로그인이 필요한 기능입니다.");
+		return false;
+	}
+
+	var likeDislike = 0;
+	
+	var status = $("#likeButton").attr("alt");
+	if(status === 'like'){
+		if(!confirm("좋아요를 취소하시겠습니까?")){
+			console.log("ㄴㄴ 유지");
+		} else {
+			likeDislike = 1;
+			go3(likeDislike);			
+		}
+	} else {
+		if(!confirm("좋아요를 하시겠습니까?")){
+			console.log("ㄴㄴ 유지");
+		} else {
+			likeDislike = 2;
+			go3(likeDislike);			
+		}		
+	} 
+})
+
+function go3(likeDislike){
+	var myId = $('#sessionId').val();
+	var bno = $("#BoardBno").val();
+	
+	if(likeDislike == 1){	
+		$.ajax({
+			type:"GET",
+			url:"/teamBoardRest/nowDislike",
+			data : {
+				id: myId,
+				bno : bno
+			   },
+			success: function(data){
+				go2();
+			},
+			error: function(error){
+				console.log("오류 : " + error);
+			}
+		})
+	} else {
+		$.ajax({
+			type:"GET",
+			url:"/teamBoardRest/nowLike",
+			data : {
+				id: myId,
+				bno : bno
+			   },
+			success: function(data){
+				go1();
+			},
+			error: function(error){
+				console.log("오류 : " + error);
+			}
+		})		
+	} 	
+}
+
+</script>		
+
 </body>
 </html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.readme.mapper.memberLikeMapper">
+
+
+	<select id="memberLikeCheck" resultType="int" parameterType="hashMap">
+		SELECT *
+		FROM WISHLISTDEV
+		WHERE YOURID = #{yourId} AND WISH_ID = #{wish_id}
+	</select>
+
+	<select id="memberLikeCheck2" resultType="int" parameterType="hashMap">
+		SELECT EXISTS
+		(
+		SELECT * 
+		FROM wishListDev 
+		where yourId = #{yourId} and wish_id = #{wish_id}
+		)
+		as hasValue;
+	</select>
+
+	<delete id="nowDislike" parameterType="hashMap">
+		DELETE FROM WISHLISTDEV
+		WHERE YOURID = #{yourId} and WISH_ID = #{wish_id}
+	</delete>
+	
+	<insert id="nowLike" parameterType="hashMap">
+		INSERT INTO WISHLISTDEV
+		(YOURID, WISH_ID)
+		VALUES
+		(#{yourId}, #{wish_id})
+		
+	</insert>
+</mapper>

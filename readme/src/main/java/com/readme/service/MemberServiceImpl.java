@@ -57,6 +57,10 @@ public class MemberServiceImpl implements MemberService {
 		return dao.listMember();
 	}
 
-
+	@Override
+	public List<MemberVO> specificMember(String id) {
+		// TODO Auto-generated method stub
+		return dao.specificMember(id);
+	}
 
 }
