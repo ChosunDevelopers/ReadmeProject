@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,35 +76,36 @@
  	</script>
 </head>
     <body> 
-        <div id="page-top">
+<div id="page-top">
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
                 <div class="container">
-                    <a class="navbar-brand" href="#page-top">ReadMe</a>
+                    <a class="navbar-brand" href="/index">Read Me</a>
                     <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
                         <i class="fas fa-bars"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/list">팀 찾기</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/memberSearch/memberSearch">팀원 찾기</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#notify">공지사항</a></li>
-                            
-                            <c:if test = "${loginID == null}">
-	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
-	                        </c:if>
-	                        
-	                        <c:if test = "${loginID != null}">
-	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/myPage">마이페이지</a></li>
-	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
-	                        </c:if>
-	                        
-                        </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/list">팀 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/memberSearch/memberSearch">팀원 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/notice/list">공지사항</a></li>
+                        
+                        <c:if test = "${loginID == null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
+                        </c:if>
+                        
+                        <c:if test = "${loginID != null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/myPage">마이페이지</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
+                        </c:if>
+                        
+                    </ul>
+
                     </div>
                 </div>
             </nav>    
-        </div>
+</div>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 offset-md-10">
@@ -217,19 +219,19 @@ function go2(data){
 			str += "<div class='card' style='width: 18rem;'>";
 			str += "<div class='card-body'>";
 			str += "<div class='content-img'>";
-			str += "<img src='../../../resources/images/cat.png' alt='이미지'>";
+			str += "<img alt = '' title = '이미지를 등록해주세요' src = '<spring:url value = '"+/image/+data[i].profileThumbImg+"'/>'/>";
 			str += "</div>";
 			str += "<div class='content-text'>";
-			str += "<h5 class='card-title'>"+data[i].name+"</h5>";
+			str += "<h5 class='card-title mb-2 text-muted'>"+data[i].name+"</h5>";
 			str += "<h6 class='card-subtitle mb-2 text-muted'>"+data[i].id+"</h6>";
 			str += "<input type='hidden' class='hiddenUserId' value='"+data[i].id+"'>";
 			str += "</div>";
 			str += "</div>";
-			str += "<p class='card-text'>"+data[i].skill+"</p>";
+			str += "<p class='card-text mb-2 text-muted'>"+data[i].skill+"</p>";
 			str += "<div class='more'>";
 			str += "<a href='/memberSearch/memberDetail/"+data[i].id+"' class='card-link' style='float:right'>더보기</a>";
 			str += "</div>";
-			str += "</div>";					
+			str += "</div>";				
 		}
 		cardList.html(str);
 	}
@@ -257,5 +259,38 @@ $(document).on("click", ".card-link", function(e){
 })
 */
  </script>
+ 
+<br><br> 
+        <!-- Footer-->
+        
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">
+                            한국 IT 직업전문학교
+                            <br />
+                            서울 서초구 강남대로 27길 15-5 성경빌딩
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <!-- Footer 팀원 찾기 Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">About Read Me</h4>
+                        <p class="lead mb-0">
+                            참가하고 싶은 팀에 쉽게 지원할 수 있고 능력있는 팀원을 찾을 수 있습니다.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">(주) Read Me</h4>
+                        <p class="lead mb-0">
+                            3조가 만들었습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer> 
     </body>
 </html>

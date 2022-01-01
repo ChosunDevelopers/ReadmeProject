@@ -46,11 +46,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>src/main/webapp/resources/images/languages</name>
-			<type>2</type>
-			<locationURI>PARENT-4-PROJECT_LOC/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/language</locationURI>
-		</link>
-		<link>
 			<name>src/main/webapp/resources/imgUpload/2021</name>
 			<type>2</type>
 			<locationURI>PARENT-6-PROJECT_LOC/DEV/sts-bundle/pivotal-tc-server/instances/server3/wtpwebapps/readme/resources/imgUpload/2021</locationURI>

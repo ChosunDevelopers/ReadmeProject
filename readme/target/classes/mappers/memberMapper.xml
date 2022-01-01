@@ -49,13 +49,15 @@
 	</select>
 
 	<!-- 회원정보 수정 -->
-	<update id="memberUpdate">
+	<update id="memberUpdate" parameterType="memberVO">
 		UPDATE MEMBER SET
 		PASSWORD = #{password},
 		NAME = #{name},
 		PHONE = #{phone},
-		REGION = #{region}
-
+		REGION = #{region},
+		JUMIN = #{jumin},
+		PROFILEIMG = #{profileImg},
+		PROFILETHUMBIMG = #{profileThumbImg}
 		WHERE ID = #{id}
 	</update>
 
@@ -97,4 +99,25 @@
 		WHERE ID = #{id}
 	</select>
 	
+	
+	<select id="allMemberProfile" parameterType="memberProfileVO" resultType="memberProfileVO">
+		SELECT
+			member.id, member.name, member.jumin, member.phone, member.region, member.profileImg,
+			member.profileThumbImg,
+			memberdetail.comment, memberdetail.url, memberdetail.portfolio_name,
+			memberdetail.portfolio_path,
+   			member_skill_rel.skill
+		FROM MEMBER
+		LEFT JOIN MEMBERDETAIL
+		ON MEMBER.id = MEMBERDETAIL.id
+    	LEFT JOIN MEMBER_SKILL_REL
+    	ON MEMBER.id = MEMBER_SKILL_REL.id;
+	</select>
+
+	<select id = "idcheck" parameterType = "String" resultType = "Integer">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE 
+		ID = #{email}
+	
+	</select>
 </mapper>

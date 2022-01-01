@@ -20,4 +20,8 @@ public interface MemberDAO {
 	public List<MemberVO> listMember();
 	
 	public List<MemberVO> specificMember(String id);
+
+	public List<MemberProfileVO> allMemberProfile();
+	
+	public int idcheck(String email);
 }

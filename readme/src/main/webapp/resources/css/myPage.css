@@ -24,10 +24,10 @@ tr{
 .submitBtnBlack{
 	border : 2px solid #2C3E50;
 	border-radius :10px;
-	width : 214px;
-	height : 82px;
+	width : 180px;
+	height : 67px;
 	background-color : white;
-	font-size : 28px;
+	font-size : 22px;
 	font-weight : 100px;
 }
 

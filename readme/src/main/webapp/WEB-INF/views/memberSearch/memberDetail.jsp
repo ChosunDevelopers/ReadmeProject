@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,52 +28,57 @@
     </style>
 </head>
 <body>
-        <div id="page-top">
+<div id="page-top">
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
                 <div class="container">
-                    <a class="navbar-brand" href="#page-top">ReadMe</a>
+                    <a class="navbar-brand" href="/index">Read Me</a>
                     <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
                         <i class="fas fa-bars"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/list">팀 찾기</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/memberSearch/memberSearch">팀원 찾기</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#notify">공지사항</a></li>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/list">팀 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/memberSearch/memberSearch">팀원 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/notice/list">공지사항</a></li>
+                        
+                        <c:if test = "${loginID == null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
+                        </c:if>
+                        
+                        <c:if test = "${loginID != null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/myPage">마이페이지</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
+                        </c:if>
+                        
+                    </ul>
 
-                            <c:if test = "${loginID == null}">
-	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
-	                        </c:if>
-	                        
-	                        <c:if test = "${loginID != null}">
-	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/myPage">마이페이지</a></li>
-	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
-	                        </c:if>
-	                                                
-                        </ul>
                     </div>
                 </div>
             </nav>    
-        </div>
+</div>
         
         <div class="container">
         	<div class="row gx-4 gx-lg-5 align-items-center my-5">
 				<div class="col-lg-3">
-					<img class="img-fluid rounded mb-4 mb-lg-0" src="../../../resources/images/cat.png" alt="profile">
+					<!-- <img class="img-fluid rounded mb-4 mb-lg-0" src="../../../resources/images/cat.png" alt="profile"> -->
+					<img src = "<spring:url value = '/image/${myProfile.profileThumbImg }'/>"/>	
 				</div>        
 
 				<c:forEach var="specificMember" items = "${specificMember}">
 				<div class="col">
-					<p>이름: <span>${specificMember.name}</span></p>
-					<p>이메일 : ${wish_id }</p>
-					<p>지역 : ${specificMember.region }</p>
+					<h6>이름: ${specificMember.name}</h6>
+					<br>
+					<h6>이메일 : ${wish_id }</h6>
+					<br>
+					<h6>지역 : ${specificMember.region }</h6>
 				</div>
 				<div class="col">
 					<input type = "hidden" value="${specificMember.jumin }" id="jumin">
-					<p>나이 : ${age}세</p>
-					<p>핸드폰번호 : ${specificMember.phone }</p>
+					<h6>나이 : ${age}세</h6>
+					<br>
+					<h6>핸드폰번호 : ${specificMember.phone }</h6>
 				</div>
 				</c:forEach>
 
@@ -83,21 +89,24 @@
         	<hr>
         	<div class="mySkill">
 				<h3>보유 스킬</h3>
-				<h5>${memberSkill}</h5>
+				<h6>${memberSkill}</h6>
 				<br>
 			</div>
 			<hr>
 			<div class="memberComment">
 				<h3>자기소개</h3>
-				<h5>${myProfile.comment}</h5>
+				<textarea class="form-control" rows="20" cols="" readonly>${myProfile.comment}</textarea>
+				<%-- <h6>${myProfile.comment}</h6> --%>
 				<br>
 			</div>
 			<hr>
 			<div class="memberPortfolio">
 				<h3>포트폴리오 url</h3>
 				<h6><a href=${myProfile.url }>${myProfile.url }</a></h6>
-				<h6>첨부파일 : snow의 포트폴리오.pdf</h6> 
-				<br>${myProfile.portfolio_name}
+				<p>첨부파일 : ${myProfile.portfolio_name}</p> 
+				<br>
+				<a href = "<spring:url value = '/image/${myProfile.portfolio_path }'/>" 
+					download = "${myProfile.portfolio_name}">첨부파일 다운로드</a>				
 			</div>
 			<hr>
  
@@ -227,5 +236,38 @@ function go3(likeDislike){
 
 
 </script>
+
+
+        <!-- Footer-->
+        
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">
+                            한국 IT 직업전문학교
+                            <br />
+                            서울 서초구 강남대로 27길 15-5 성경빌딩
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <!-- Footer 팀원 찾기 Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">About Read Me</h4>
+                        <p class="lead mb-0">
+                            참가하고 싶은 팀에 쉽게 지원할 수 있고 능력있는 팀원을 찾을 수 있습니다.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">(주) Read Me</h4>
+                        <p class="lead mb-0">
+                            3조가 만들었습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 </body>
 </html>

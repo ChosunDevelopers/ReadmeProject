@@ -34,7 +34,7 @@ public class NoticeController {
 			int result = 0;
 			result = service.write(NoticeVO);
 			if(result == 1) {
-				return "redirect:/";
+				return "redirect:/notice/list";
 			}
 			
 			return "redirect:notice/notice";

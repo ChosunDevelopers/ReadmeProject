@@ -20,4 +20,8 @@ public interface MemberService {
 	public List<MemberVO> listMember() throws Exception;
 	
 	public List<MemberVO> specificMember(String id);
+
+	public List<MemberProfileVO> allMemberProfile();
+	
+	public int idcheck(String email);
 }

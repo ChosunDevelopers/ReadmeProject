@@ -82,7 +82,19 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(Namespace + ".specificMember", id);
 	}
-	
+
+	@Override
+	public List<MemberProfileVO> allMemberProfile() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(Namespace + ".allMemberProfile");
+	}
+
+	@Override
+	public int idcheck(String email) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(Namespace + ".idcheck", email );
+	}
+		
 	
 
 }

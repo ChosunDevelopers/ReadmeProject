@@ -3,8 +3,9 @@ package com.readme.dto;
 public class MemberLikeVO {
 
 	private String yourId;
-	private String wish_id;
-	
+	private String skill;
+	private String name;
+	private String id;
 	
 	public String getYourId() {
 		return yourId;
@@ -12,12 +13,30 @@ public class MemberLikeVO {
 	public void setYourId(String yourId) {
 		this.yourId = yourId;
 	}
-	public String getWish_id() {
-		return wish_id;
+	public String getSkill() {
+		return skill;
 	}
-	public void setWish_id(String wish_id) {
-		this.wish_id = wish_id;
+	public void setSkill(String skill) {
+		this.skill = skill;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	
+	
+	
+
+	
 	
 	
 }

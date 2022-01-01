@@ -1,7 +1,8 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <title>글 상세</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,12 +17,16 @@
 
 
 <style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap')
+	;
+
 #mainNav {
 	position: sticky;
-}
-
-.container form {
-	margin: 20px 0;
 }
 
 .container form button {
@@ -79,6 +84,39 @@
 	width: 35px;
 	height: 35px;
 }
+
+.text-box {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.box {
+	float: right;
+	padding: 5px 5px 5px 5px;
+}
+
+.textarea_test {
+	resize: none;
+	line-height: 30px;
+	width: 100%;
+	overflow-y: hidden;
+	height: 130px;
+	border: 1px solid #ddd;
+}
+textarea {
+			width: 100%;
+			height: 200px;
+			box-sizing: border-box;
+			border: solid 3px;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+hr{
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #fff;
+	}		
+	#wantRight{
+		float: right;
+	}
 </style>
 </head>
 <body>
@@ -87,72 +125,143 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-	<div class="container">
-		<div class="table">
 
-			<div class="col-md-12">
-				<div class="page-header" style="padding: 40px 10px 10px 10px;">
-					<h1>${ data.title }</h1>
+	<div id="page-top">
+		<!-- Navigation-->
+		<nav
+			class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
+			id="mainNav">
+			<div class="container">
+				<a class="navbar-brand" href="/index">Read Me</a>
+				<button
+					class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+					type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+					Menu <i class="fas fa-bars"></i>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/list">팀 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/memberSearch/memberSearch">팀원 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/notice/list">공지사항</a></li>
+                        
+                        <c:if test = "${loginID == null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
+                        </c:if>
+                        
+                        <c:if test = "${loginID != null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/myPage">마이페이지</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
+                        </c:if>
+                        
+                    </ul>
+
 				</div>
-				<span style="font-size: 1.0em;">모집인원 : ${data.maxteam }</span><br>
-				<span style="font-size: 1.0em;"> 입력일 : <fmt:formatDate
-						value="${data.regDate}" pattern="yyyy.MM.dd HH:mm:ss" />
-				</span>
-
-				<h3>${ data.comment }</h3>
-				<div style="float: right">
-					<blockquote class="pull-right">
-
-						<!-- 게시글 좋아요 -->
-						<div class="col" id="divLikeButton">
-							<img alt="dislike" src="../../../resources/images/dislike.png"
-								id="likeButton">
-						</div>
-						<p>
-							<a class="btn btn-sm btn-primary" href="/list">목록으로</a>
-						</p>
-						<p>
-							<a class="btn btn-sm btn-warning"
-								href="/update?teamboardBno=${teamboardBno}">수정</a>
-						</p>
-
-						<form method="POST" action="/delete">
-							<input type="hidden" name="teamboardBno" value="${teamboardBno}" />
-							<input class="btn btn-sm btn-danger" type="submit" value="삭제" />
-						</form>
-
-
-					</blockquote>
-				</div>
-
 			</div>
+		</nav>
+	</div>
+
+
+
+	<div class="container">
+
+		<div class="col-md-12">
+			<div class="text-box" style="text-align: left;">
+				<div class="page-header" style="padding: 40px 0px 0px 0px;">
+					<h3>${ data.title }</h3>
+				</div>
+				<span style="font-size: 0.8em;">작성자 : ${data.id }</span><br> <span
+					style="font-size: 0.8em;">모집인원 : ${data.maxteam }</span><br> <span
+					style="font-size: 0.8em;"> 입력일 : <fmt:formatDate
+						value="${data.regDate}" pattern="yyyy.MM.dd" /><br>
+				</span>
+				<br>
+			</div>
+			<textarea readonly>${data.comment }</textarea>
+
+
 		</div>
+	
 
-		<!-- 댓글 시작 -->
+		<blockquote class="pull-right">
+			<div class="box">
+				<c:if test="${data.id == loginID}">
+					<form method="POST"  action="/delete">
+						<input type="hidden" name="teamboardBno" value="${teamboardBno}" />
+						<input class="btn btn-sm btn-danger" type="submit" value="삭제" />
+					</form>
+				</c:if>
 
-		<c:forEach items="${reply}" var="reply">
+<%-- 				<c:if test="${data.id != loginID}">
+					<a onclick="alert('다른 이용자의 글은 삭제할 수 없습니다.');"
+						style="cursor: pointer" class="btn btn-sm btn-danger">삭제</a>
+				</c:if> --%>
+			</div>
+			
+			<div class="box">
+				<c:if test="${data.id == loginID}">
+					<p>
+						<a class="btn btn-sm btn-warning"
+							href="/update?teamboardBno=${teamboardBno}">수정</a>
+					</p>
 
-			<div>
-				<p>${reply.id}
-
-					<fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" />
+				</c:if>
+<%-- 				<c:if test="${data.id != loginID}">
+					<a onclick="alert('다른 이용자의 글은 수정할 수 없습니다.');"
+						style="cursor: pointer" class="btn btn-sm btn-warning">수정</a>
+				</c:if> --%>
+			</div>
+			<div class="box">
+				<p>
+					<a class="btn btn-sm btn-primary" href="/list">목록으로</a>
 				</p>
+			</div>
+			
+			<!-- 게시글 좋아요 -->
+			<div class="box" id="divLikeButton">
+				<img alt="dislike" src="../../../resources/images/dislike.png"
+					id="likeButton">
+			</div>
+		</blockquote>
+		<br><br><br><br>
+		<!-- 댓글 시작 -->
+		<br>
+		<c:forEach items="${reply}" var="reply">
+			<hr>
+			<div>
+				<div class="forReply">
+					<div class="forReplyId">
+						<h6>${reply.id}</h6>
+					</div>
+					<div class="forReplyDate">
+						<fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" />	
+						
+						<c:if test="${reply.id == loginID}">
+							<form method="POST" action="/reply/delete?rno=${reply.rno}">		
+								<input type="hidden" name="bno" value="${teamboardBno}">
+								<button class="btn btn-sm btn-danger" id="wantRight" type="submit">삭제</button>
+							</form>						
+						</c:if>
+																	
+					</div>
+				</div>
 
 				<p>${reply.comment }</p>
-				<form method="POST" action="/reply/delete?rno=${reply.rno}">
+<%-- 				<form method="POST" action="/reply/delete?rno=${reply.rno}">
 
-					<input type="hidden" name="bno" value="${teamboardBno}">
+					<input type="hidden" name="bno" value="${teamboardBno}"> 
 
-					<p>
+<%-- 					<p>
 						<c:if test="${reply.id == loginID}">
-							<button type="submit">삭제</button>
+							<button class="btn btn-sm btn-danger" id="wantRight" type="submit">삭제</button>
 						</c:if>
-					</p>
-					<p>
+					</p> --%>
+<%-- 					<p>
 						<c:if test="${reply.id != loginID}">
 						</c:if>
-					</p>
-				</form>
+					</p> 
+				</form>--%>
 				<%--<a href="/reply/delete?rno=${reply.rno}">댓글 삭제</a> --%>
 
 			</div>
@@ -163,18 +272,18 @@
 			<div>
 
 				<form method="post" action="/reply/write">
-
-					<p>ID : ${loginID }</p>
+					<hr>
+					<p>댓글 작성</p>
 					<p>
 						<!-- <label>댓글 작성자</label> <input type="text" name="id"> -->
 						<input type="hidden" name="id" value="${loginID}">
 					</p>
 					<p>
-						<textarea rows="5" cols="50" name="comment"></textarea>
+						<textarea class="textarea_test" name="comment"></textarea>
 					</p>
 					<input type="hidden" name="bno" value="${teamboardBno}">
 					<p>
-						<button type="submit">댓글 작성</button>
+						<button class="btn btn-sm btn-primary" type="submit">댓글 작성</button>
 					</p>
 				</form>
 
@@ -182,6 +291,8 @@
 		</c:if>
 		<input type="hidden" value="${yourId }" id="sessionId"> <input
 			type="hidden" value="${teamboardBno }" id="BoardBno">
+</div>
+			
 		<script>
 			$(document).ready(function like_func() {
 				var myId = $('#sessionId').val();
@@ -289,5 +400,37 @@
 				}
 			}
 		</script>
+<br><br><br><br>
+        <!-- Footer-->
+        
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">
+                            한국 IT 직업전문학교
+                            <br />
+                            서울 서초구 강남대로 27길 15-5 성경빌딩
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <!-- Footer 팀원 찾기 Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">About Read Me</h4>
+                        <p class="lead mb-0">
+                            참가하고 싶은 팀에 쉽게 지원할 수 있고 능력있는 팀원을 찾을 수 있습니다.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">(주) Read Me</h4>
+                        <p class="lead mb-0">
+                            3조가 만들었습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>		
 </body>
 </html>

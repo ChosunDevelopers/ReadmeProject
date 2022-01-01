@@ -63,4 +63,16 @@ public class MemberServiceImpl implements MemberService {
 		return dao.specificMember(id);
 	}
 
+
+	@Override
+	public List<MemberProfileVO> allMemberProfile() {
+		// TODO Auto-generated method stub
+		return dao.allMemberProfile();
+	}
+
+	@Override
+	public int idcheck(String email) {
+		// TODO Auto-generated method stub
+		return dao.idcheck(email);
+	}
 }

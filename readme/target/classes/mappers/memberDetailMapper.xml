@@ -22,4 +22,42 @@
     WHERE ID = #{id};
     </update>
 
+
+	<!-- 내가 찜한 개발자 -->
+	<select id = "pickTeammate" parameterType="String" resultType="com.readme.dto.MemberLikeVO">
+		SELECT
+			W.YOURID, S.SKILL, S.NAME, S.ID
+		FROM
+			MEMBER_SKILL_REL S
+		LEFT JOIN 
+			WISHLISTDEV W
+		ON
+			S.ID = W.WISH_ID
+		WHERE 
+			W.YOURID = #{id}
+	</select>
+
+	<select id = "pickBoard" parameterType="String" resultType="com.readme.dto.BoardLikeVO">
+		SELECT
+			T.ID, T.TITLE, T.COMMENT, T.TEAMBOARD_BNO
+		FROM
+			TEAMBOARD T
+		LEFT JOIN
+			INTERESTBOARD I
+		ON
+			T.TEAMBOARD_BNO = I.TEAMBOARD_BNO
+		WHERE
+		 	I.ID = #{id}
+		
+	</select>
+	
+	<select id = "pickBoardAll" resultType="MemberProfileVO">
+		SELECT
+			member.id, member.name, member.profileImg, member.profileThumbImg,
+			 teamboard.title, teamboard.comment
+		FROM MEMBER
+		LEFT JOIN TEAMBOARD
+		ON MEMBER.id = TEAMBOARD.id;
+	</select>
+	
 </mapper>

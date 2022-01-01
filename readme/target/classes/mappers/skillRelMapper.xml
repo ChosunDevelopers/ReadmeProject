@@ -12,23 +12,31 @@
 	FROM MEMBER_SKILL_REL
 </select>
 
-<select id="getSkillList" resultType="skillRelVO" parameterType="String">
+<select id="getSkillList" resultType="MemberProfileVO" parameterType="String">
 	<![CDATA[
-	SELECT ID,
-		   SKILL,
-		   NAME
-	FROM MEMBER_SKILL_REL
-	WHERE SKILL LIKE CONCAT('%',#{skill},'%')
+    		SELECT M.ID,
+			   M.NAME,
+			   D.SKILL,
+			   M.profileImg,
+			   M.profileThumbImg
+		FROM MEMBER M
+		LEFT JOIN MEMBER_SKILL_REL D
+		ON M.ID = D.ID
+	WHERE D.SKILL LIKE CONCAT('%',#{skill},'%')
 	]]>
 </select> 
 
-<select id="getSkillListForName" resultType="skillRelVO" parameterType="String">
-	<![CDATA[
-	SELECT ID,
-		   SKILL,
-		   NAME
-	FROM MEMBER_SKILL_REL
-	WHERE NAME LIKE CONCAT('%',#{skill},'%')
+<select id="getSkillListForName" resultType="MemberProfileVO" parameterType="String">
+	<![CDATA[	
+    		SELECT M.ID,
+			   M.NAME,
+			   D.SKILL,
+			   M.profileImg,
+			   M.profileThumbImg
+		FROM MEMBER M
+		LEFT JOIN MEMBER_SKILL_REL D
+		ON M.ID = D.ID
+        WHERE D.NAME LIKE CONCAT('%',#{skill},'%')
 	]]>
 </select> 
 

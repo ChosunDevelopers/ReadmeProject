@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.readme.dto.MemberLikeVO;
+import com.readme.dto.MemberProfileVO;
 import com.readme.dto.MemberVO;
 import com.readme.dto.SkillRelVO;
 import com.readme.service.MemberLikeService;
@@ -33,42 +33,43 @@ public class MemberSearchRestVer {
 	@Inject
 	private MemberLikeService lService; 
 	
-	@RequestMapping(value = "/memberSearch", produces="application/json")
-	@ResponseBody
-	public List<MemberVO> memberList() throws Exception{
-		logger.info("memberSearchPage");
-		
-		List<MemberVO> memberList = mService.listMember();
-		
-		return memberList;
-	}
-	
+	/*
+	 * @RequestMapping(value = "/memberSearch", produces="application/json")
+	 * 
+	 * @ResponseBody public List<MemberVO> memberList() throws Exception{
+	 * logger.info("memberSearchPage");
+	 * 
+	 * List<MemberVO> memberList = mService.listMember();
+	 * 
+	 * return memberList; }
+	 */	
 	
 	@RequestMapping(value = "/skillSearch", produces="application/json")
 	@ResponseBody
-	public List<SkillRelVO> memberSkillList() throws Exception{
+	public List<MemberProfileVO> memberSkillList() throws Exception{
 		logger.info("SkillSearchPage");
-		
-		List<SkillRelVO> skillRelList = rService.listSkillRel();
-		return skillRelList;
+		//MemberProfileVO
+		//List<SkillRelVO> skillRelList = rService.listSkillRel();
+		List<MemberProfileVO> result = mService.allMemberProfile();
+		return result;
 	}
 	
 	@RequestMapping(value = "/skillList", produces="application/json")
 	@ResponseBody
-	public List<SkillRelVO> memberSkillList2(@RequestParam("skill") String skill) throws Exception{
+	public List<MemberProfileVO> memberSkillList2(@RequestParam("skill") String skill) throws Exception{
 		logger.info("SkillList2");
 		
-		List<SkillRelVO> skillRelList = rService.getSkillList(skill);
+		List<MemberProfileVO> skillRelList = rService.getSkillList(skill);
 
 		return skillRelList;
 	}
 	
 	@RequestMapping(value = "/userName", produces="application/json")
 	@ResponseBody
-	public List<SkillRelVO> userName(@RequestParam("name") String name) throws Exception {
+	public List<MemberProfileVO> userName(@RequestParam("name") String name) throws Exception {
 		logger.info("userNameSearch");
 		
-		List<SkillRelVO> skillRelList = rService.getSkillListForName(name);
+		List<MemberProfileVO> skillRelList = rService.getSkillListForName(name);
 		
 		return skillRelList;
 	}

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.readme.dao.SkillRelDAO;
+import com.readme.dto.MemberProfileVO;
 import com.readme.dto.SkillRelVO;
 
 @Service
@@ -22,13 +23,13 @@ public class SkillRelServiceImpl implements SkillRelService {
 	}
 
 	@Override
-	public List<SkillRelVO> getSkillList(String skill) {
+	public List<MemberProfileVO> getSkillList(String skill) {
 		// TODO Auto-generated method stub
 		return dao.getSkillList(skill);
 	}
 
 	@Override
-	public List<SkillRelVO> getSkillListForName(String name) {
+	public List<MemberProfileVO> getSkillListForName(String name) {
 		// TODO Auto-generated method stub
 		return dao.getSkillListForName(name);
 	}

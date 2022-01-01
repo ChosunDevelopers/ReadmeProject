@@ -101,26 +101,22 @@
 					Menu <i class="fas fa-bars"></i>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ms-auto">
-						<li class="nav-item mx-0 mx-lg-1"><a
-							class="nav-link py-3 px-0 px-lg-3 rounded" href="/list">팀 찾기</a></li>
-						<li class="nav-item mx-0 mx-lg-1"><a
-							class="nav-link py-3 px-0 px-lg-3 rounded"
-							href="/memberSearch/memberSearch">팀원 찾기</a></li>
-						<li class="nav-item mx-0 mx-lg-1"><a
-							class="nav-link py-3 px-0 px-lg-3 rounded" href="#notify">공지사항</a></li>
-						<c:if test="${loginID == null}">
-							<li class="nav-item mx-0 mx-lg-1"><a
-								class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
-						</c:if>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/list">팀 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/memberSearch/memberSearch">팀원 찾기</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/notice/list">공지사항</a></li>
+                        
+                        <c:if test = "${loginID == null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/login">로그인/회원가입</a></li>
+                        </c:if>
+                        
+                        <c:if test = "${loginID != null}">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/myPage">마이페이지</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
+                        </c:if>
+                        
+                    </ul>
 
-						<c:if test="${loginID != null}">
-							<li class="nav-item mx-0 mx-lg-1"><a
-								class="nav-link py-3 px-0 px-lg-3 rounded" href="/login/myPage">마이페이지</a></li>
-							<li class="nav-item mx-0 mx-lg-1"><a
-								class="nav-link py-3 px-0 px-lg-3 rounded" href="/member/logout">로그아웃</a></li>
-						</c:if>
-					</ul>
 				</div>
 			</div>
 		</nav>
@@ -188,5 +184,37 @@
 
 
 	</div>
+<br><br><br>
+        <!-- Footer-->
+        
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">
+                            한국 IT 직업전문학교
+                            <br />
+                            서울 서초구 강남대로 27길 15-5 성경빌딩
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <!-- Footer 팀원 찾기 Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">About Read Me</h4>
+                        <p class="lead mb-0">
+                            참가하고 싶은 팀에 쉽게 지원할 수 있고 능력있는 팀원을 찾을 수 있습니다.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">(주) Read Me</h4>
+                        <p class="lead mb-0">
+                            3조가 만들었습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>	
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.readme.dto.MemberProfileVO;
 import com.readme.dto.SkillRelVO;
 
 @Repository
@@ -24,13 +25,13 @@ public class SkillRelDAOImpl implements SkillRelDAO {
 	}
 
 	@Override
-	public List<SkillRelVO> getSkillList(String skill) {
+	public List<MemberProfileVO> getSkillList(String skill) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(Namespace+".getSkillList", skill);
 	}
 
 	@Override
-	public List<SkillRelVO> getSkillListForName(String name) {
+	public List<MemberProfileVO> getSkillListForName(String name) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(Namespace+".getSkillListForName", name);
 	}

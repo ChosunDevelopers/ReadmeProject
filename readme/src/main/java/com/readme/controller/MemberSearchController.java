@@ -58,7 +58,8 @@ public class MemberSearchController {
 		
 		List<MemberVO> specificMember = mService.specificMember(id);
 		
-		int yymmdd = specificMember.get(0).getJumin();				
+		int yymmdd = specificMember.get(0).getJumin();
+		logger.info("±×°Å + " + yymmdd);
 		LocalDate now = LocalDate.now();
 		int year = now.getYear() - 2000;		
 		int age = year - (yymmdd / 10000) + 100;
